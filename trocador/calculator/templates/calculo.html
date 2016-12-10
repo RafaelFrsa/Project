@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+
+{% block content %}	   
+
+
+    <form method="POST" class="post-form">
+        <div class="form-group">
+              {% csrf_token %}
+            <div class="col-xs-2">
+                
+                {{form}}
+                <br>
+                <button type="submit" class="btn btn-primary" role="button">Calcular</button>      
+            </div>  
+
+                
+              
+        </div> 
+    </form>
+    
+{% endblock %}        
+       
