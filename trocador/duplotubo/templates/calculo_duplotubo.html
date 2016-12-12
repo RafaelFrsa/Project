@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}	   
+
+
+    <form method="POST" class="post-form">
+        <div class="form-group">
+              {% csrf_token %}
+            <div class="col-xs-2">
+               <div class="panel panel-primary">
+                    <div class="panel-body">
+                    Calculo
+                </div>
+                <div class="panel-footer">
+                    
+                        <label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
+                        {{form.Vazao1}}
+                        <label for="{{ form.T_entr1.id_for_label }}" class="label label-primary">{{ form.T_entr1.label }}</label>
+                        {{form.T_entr1}}
+                        <label for="{{ form.T_said1.id_for_label }}" class="label label-primary">{{ form.T_said1.label }}</label>
+                        {{form.T_said1}}
+                        <label for="{{ form.k1.id_for_label }}" class="label label-primary">{{ form.k1.label }}</label>
+                        {{form.k1}}
+                        <label for="{{ form.cp1.id_for_label }}" class="label label-primary">{{ form.cp1.label }}</label>
+                        {{form.cp1}}  
+                        <label for="{{ form.Pr1.id_for_label }}" class="label label-primary">{{ form.Pr1.label }}</label>
+                        {{form.Pr1}}  
+                        <label for="{{ form.Viscosidade1.id_for_label }}" class="label label-primary">{{ form.Viscosidade1.label }}</label>
+                        {{form.Viscosidade1}}
+                        <label for="{{ form.Densidade1.id_for_label }}" class="label label-primary">{{ form.Densidade1.label }}</label>
+                        {{form.Densidade1}}
+                        <label for="{{ form.Diam_ext1.id_for_label }}" class="label label-primary">{{ form.Diam_ext1.label }}</label>
+                        {{form.Diam_ext1}}
+                        <label for="{{ form.Viscos_tw1.id_for_label }}" class="label label-primary">{{ form.Viscos_tw1.label }}</label>
+                        {{form.Viscos_tw1}}                                                                    
+                </div>
+                
+                     
+            </div>        
+
+            <div id="box">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                    Calculo 2
+                </div>
+                <div class="panel-footer">
+                    
+                        <label for="{{ form.Vazao2.id_for_label }}" class="label label-primary">{{ form.Vazao2.label }}</label>
+                        {{form.Vazao2}}
+                        <label for="{{ form.T_entr2.id_for_label }}" class="label label-primary">{{ form.T_entr2.label }}</label>
+                        {{form.T_entr2}}
+                        <label for="{{ form.T_said2.id_for_label }}" class="label label-primary">{{ form.T_said2.label }}</label>
+                        {{form.T_said2}}
+                        <label for="{{ form.k2.id_for_label }}" class="label label-primary">{{ form.k2.label }}</label>
+                        {{form.k2}}
+                        <label for="{{ form.cp2.id_for_label }}" class="label label-primary">{{ form.cp2.label }}</label>
+                        {{form.cp2}}  
+                        <label for="{{ form.Pr2.id_for_label }}" class="label label-primary">{{ form.Pr2.label }}</label>
+                        {{form.Pr2}}  
+                        <label for="{{ form.Viscosidade2.id_for_label }}" class="label label-primary">{{ form.Viscosidade2.label }}</label>
+                        {{form.Viscosidade2}}
+                        <label for="{{ form.Densidade2.id_for_label }}" class="label label-primary">{{ form.Densidade2.label }}</label>
+                        {{form.Densidade2}}
+                        <label for="{{ form.Diam_ext2.id_for_label }}" class="label label-primary">
+                        {{ form.Diam_ext2.label }}</label>
+                        {{form.Diam_ext2}}
+                        <label for="{{ form.Viscos_tw2.id_for_label }}" class="label label-primary">{{ form.Viscos_tw2.label }}</label>
+                        {{form.Viscos_tw2}}                                                                      
+
+                </div>
+                </div> 
+                </div>
+
+              <button type="submit" class="btn btn-primary" role="button">Calcular</button> 
+        </div> 
+    </form>
+    
+{% endblock %}        
+       

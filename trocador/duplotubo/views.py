@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from trocador.calculator.forms import Calculo
+from trocador.duplotubo.forms import Calculo
 from django.http import HttpResponse  
-from trocador.calculator.metodo_kern import *;
-from trocador.calculator.models import Resultado
+from trocador.duplotubo.metodo_kern import *;
+from trocador.duplotubo.models import Resultado
 
 
 
@@ -43,7 +43,7 @@ from trocador.calculator.models import Resultado
 # 			'ef_b2':form.cleaned_data['ef_b2']}
 # 	return fluido1,fluido2,material
 
-def calculo(request):
+def calculo_duplotubo(request):
 	
 	form = Calculo(request.POST)
 	if form.is_valid():
@@ -102,7 +102,7 @@ def calculo(request):
 		res.save()
 	context = {'form': form}
 
-	return render(request, 'calculo.html', context)
+	return render(request, 'calculo_duplotubo.html', context)
 
 
 

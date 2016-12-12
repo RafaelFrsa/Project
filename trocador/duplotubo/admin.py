@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from trocador.calculator.models import Agua, Butano, CO2, Metano, Pentano, RC318, Resultado
+from trocador.duplotubo.models import Agua, Butano, CO2, Metano, Pentano, RC318, Resultado
 
 # Register your models here.
 admin.site.register(Agua)

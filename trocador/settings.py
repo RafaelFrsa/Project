@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'trocador.core',
-    'trocador.calculator',   
+    'trocador.core', 
+    'trocador.duplotubo',  
+    'trocador.cascoetubos'
 ]
 
 MIDDLEWARE = [
