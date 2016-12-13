@@ -2,16 +2,18 @@
 
 {% block content %}	   
 
-
+    <br>
+        
     <form method="POST" class="post-form">
         <div class="form-group">
               {% csrf_token %}
-            <div class="col-xs-2">
-               <div class="panel panel-primary">
-                    <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                                           <div class="panel panel-primary">
+                    <div class="panel-heading">
                     Calculo
                 </div>
-                <div class="panel-footer">
+                <div class="panel-body">
                     
                         <label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
                         {{form.Vazao1}}
@@ -34,16 +36,13 @@
                         <label for="{{ form.Viscos_tw1.id_for_label }}" class="label label-primary">{{ form.Viscos_tw1.label }}</label>
                         {{form.Viscos_tw1}}                                                                    
                 </div>
-                
-                     
-            </div>        
-
-            <div id="box">
-                <div class="panel panel-primary">
-                    <div class="panel-body">
+            </div> 
+                        </div>
+                        <div class="col-md-4">                <div class="panel panel-primary">
+                    <div class="panel-heading">
                     Calculo 2
                 </div>
-                <div class="panel-footer">
+                <div class="panel-body">
                     
                         <label for="{{ form.Vazao2.id_for_label }}" class="label label-primary">{{ form.Vazao2.label }}</label>
                         {{form.Vazao2}}
@@ -70,9 +69,69 @@
                 </div>
                 </div> 
                 </div>
+                        <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                    Calculo 3
+                    </div>
+                        <div class="panel-body">
+                        <label for="{{ form.K.id_for_label }}" class="label label-primary">{{ form.K.label }}</label>
+                        {{form.K}}
+                        <label for="{{ form.R.id_for_label }}" class="label label-primary">{{ form.R.label }}</label>
+                        {{form.R}}
+                        <label for="{{ form.R_fi.id_for_label }}" class="label label-primary">{{ form.R_fi.label }}</label>
+                        {{form.R_fi}}
+                        <label for="{{ form.R_fo.id_for_label }}" class="label label-primary">{{ form.R_fo.label }}</label>
+                        {{form.R_fo}}
+                        <label for="{{ form.Calor_const.id_for_label }}" class="label label-primary">{{ form.Calor_const.label }}</label>
+                        {{form.Calor_const}}
+                        <label for="{{ form.Contracorrente.id_for_label }}" class="label label-primary">{{ form.Contracorrente.label }}</label>
+                        {{form.Contracorrente}}
+                         <label for="{{ form.ef_b1.id_for_label }}" class="label label-primary">{{ form.ef_b1.label }}</label>
+                        {{form.ef_b1}}
+                        <label for="{{ form.ef_b2.id_for_label }}" class="label label-primary">{{ form.ef_b2.label }}</label>
+                        {{form.ef_b2}}
+                         <label for="{{ form.Num_tubs.id_for_label }}" class="label label-primary">{{ form.Num_tubs.label }}</label>
+                        {{form.Num_tubs}}
+                        <label for="{{ form.Alet_alt.id_for_label }}" class="label label-primary">{{ form.Alet_alt.label }}</label>
+                        {{form.Alet_alt}}
+                        <label for="{{ form.Alet_k.id_for_label }}" class="label label-primary">{{ form.Alet_k.label }}</label>
+                        {{form.Alet_k}}
+                        <label for="{{ form.Alet_esp.id_for_label }}" class="label label-primary">{{ form.Alet_esp.label }}</label>
+                        {{form.Alet_esp}}
+                        <label for="{{ form.Alet_type.id_for_label }}" class="label label-primary">{{ form.Alet_type.label }}</label>
+                        {{form.Alet_type}}
+                        <label for="{{ form.Alet_tubes.id_for_label }}" class="label label-primary">{{ form.Alet_tubes.label }}</label>
+                        {{form.Alet_tubes}}
+                        <label for="{{ form.Multi_tubes.id_for_label }}" class="label label-primary">{{ form.Multi_tubes.label }}</label>
+                        {{form.Multi_tubes}}
+                        <label for="{{ form.arranj_ser_paral.id_for_label }}" class="label label-primary">{{ form.arranj_ser_paral.label }}</label>
+                        {{form.arranj_ser_paral}}
+                        <label for="{{ form.T_I_Paralelo.id_for_label }}" class="label label-primary">{{ form.T_I_Paralelo.label }}</label>
+                        {{form.T_I_Paralelo}}
+                        <label for="{{ form.R_A_Paralelo.id_for_label }}" class="label label-primary">{{ form.R_A_Paralelo.label }}</label>
+                        {{form.R_A_Paralelo}}
+                        <label for="{{ form.Num_ramos.id_for_label }}" class="label label-primary">{{ form.Num_ramos.label }}</label>
+                        {{form.Num_ramos}}
+
+
+                        
+                    </div>
+                </div>
+                </div>
+                    </div>
+       
+       
+
+  
+
+        
+
+
+
 
               <button type="submit" class="btn btn-primary" role="button">Calcular</button> 
-        </div> 
+        
     </form>
     
 {% endblock %}        

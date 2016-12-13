@@ -154,8 +154,8 @@ class Calculo(forms.Form):
 			}
 			)
 		) 
-	Calor_const = forms.BooleanField(label='Termicamente Isolado')
-	Contracorrente = forms.BooleanField(label='Escoamento Contracorrente')
+	Calor_const = forms.BooleanField(label='Termicamente Isolado', required=False)
+	Contracorrente = forms.BooleanField(label='Escoamento Contracorrente', required=False)
 	ef_b1 = forms.FloatField(label='Eficiência da Bomba Interna',
 		widget=forms.TextInput(
 			attrs={"class":"form-control"
