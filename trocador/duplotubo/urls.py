@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.calculo_duplotubo, name='calculo_duplotubo'),
+	url(r'formulario/', views.Formulario, name='formulario'),
 
 ]

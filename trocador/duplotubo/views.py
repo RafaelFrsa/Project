@@ -2,7 +2,9 @@ from django.shortcuts import render
 from trocador.duplotubo.forms import Calculo
 from django.http import HttpResponse  
 from trocador.duplotubo.metodo_kern import *;
-from trocador.duplotubo.models import Resultado
+from trocador.duplotubo.models import *
+from trocador.duplotubo.forms import *
+
 
 
 
@@ -44,7 +46,7 @@ from trocador.duplotubo.models import Resultado
 # 	return fluido1,fluido2,material
 
 def calculo_duplotubo(request):
-	
+	#import pdb; pdb.set_trace()
 	form = Calculo(request.POST)
 	if form.is_valid():
 		resultado = yut(# Fluido1
@@ -106,3 +108,9 @@ def calculo_duplotubo(request):
 
 
 
+def Formulario(request):
+	form = ChoiceForm(request.POST or None)
+
+	if request.method == 'POST':
+		form.save()
+	return render(request, 'modelform.html', {'form':form})

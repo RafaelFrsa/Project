@@ -2,137 +2,176 @@
 
 {% block content %}	   
 
-    <br>
-        
-    <form method="POST" class="post-form">
-        <div class="form-group">
-              {% csrf_token %}
-                    <div class="row">
-                        <div class="col-md-4">
-                                           <div class="panel panel-primary">
-                    <div class="panel-heading">
-                    Calculo
+<br>
+
+<form method="POST" class="post-form">
+    <div class="form-group">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                Tubo Interno
                 </div>
                 <div class="panel-body">
-                    
-                        <label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
-                        {{form.Vazao1}}
-                        <label for="{{ form.T_entr1.id_for_label }}" class="label label-primary">{{ form.T_entr1.label }}</label>
-                        {{form.T_entr1}}
-                        <label for="{{ form.T_said1.id_for_label }}" class="label label-primary">{{ form.T_said1.label }}</label>
-                        {{form.T_said1}}
-                        <label for="{{ form.k1.id_for_label }}" class="label label-primary">{{ form.k1.label }}</label>
-                        {{form.k1}}
-                        <label for="{{ form.cp1.id_for_label }}" class="label label-primary">{{ form.cp1.label }}</label>
-                        {{form.cp1}}  
-                        <label for="{{ form.Pr1.id_for_label }}" class="label label-primary">{{ form.Pr1.label }}</label>
-                        {{form.Pr1}}  
-                        <label for="{{ form.Viscosidade1.id_for_label }}" class="label label-primary">{{ form.Viscosidade1.label }}</label>
-                        {{form.Viscosidade1}}
-                        <label for="{{ form.Densidade1.id_for_label }}" class="label label-primary">{{ form.Densidade1.label }}</label>
-                        {{form.Densidade1}}
-                        <label for="{{ form.Diam_ext1.id_for_label }}" class="label label-primary">{{ form.Diam_ext1.label }}</label>
-                        {{form.Diam_ext1}}
-                        <label for="{{ form.Viscos_tw1.id_for_label }}" class="label label-primary">{{ form.Viscos_tw1.label }}</label>
-                        {{form.Viscos_tw1}}                                                                    
+
+                    <label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
+                    {{form.Vazao1.errors}} 
+                    {{form.Vazao1}}
+                    <label for="{{ form.T_entr1.id_for_label }}" class="label label-primary">{{ form.T_entr1.label }}</label>
+                    {{form.T_entr1.errors}}
+                    {{form.T_entr1}}
+                    <label for="{{ form.T_said1.id_for_label }}" class="label label-primary">{{ form.T_said1.label }}</label>
+                    {{form.T_said1.errors}}
+                    {{form.T_said1}}
+                    <label for="{{ form.k1.id_for_label }}" class="label label-primary">{{ form.k1.label }}</label>
+                    {{form.k1.errors}}
+                    {{form.k1}}
+                    <label for="{{ form.cp1.id_for_label }}" class="label label-primary">{{ form.cp1.label }}</label>
+                    {{form.cp1.errors}} 
+                    {{form.cp1}}  
+                    <label for="{{ form.Pr1.id_for_label }}" class="label label-primary">{{ form.Pr1.label }}</label>
+                    {{form.Pr1.errors}} 
+                    {{form.Pr1}}  
+                    <label for="{{ form.Viscosidade1.id_for_label }}" class="label label-primary">{{ form.Viscosidade1.label }}</label>
+                    {{form.Viscosidade1.errors}}
+                    {{form.Viscosidade1}}
+                    <label for="{{ form.Densidade1.id_for_label }}" class="label label-primary">{{ form.Densidade1.label }}</label>
+                    {{form.Densidade1.errors}}
+                    {{form.Densidade1}}
+                    <label for="{{ form.Diam_int1.id_for_label }}" class="label label-primary">{{ form.Diam_int1.label }}</label>
+                    {{form.Diam_int1.errors}}
+                    {{form.Diam_int1}}
+                    <label for="{{ form.Diam_ext1.id_for_label }}" class="label label-primary">{{ form.Diam_ext1.label }}</label>
+                    {{form.Diam_ext1.errors}}
+                    {{form.Diam_ext1}}
+                    <label for="{{ form.Viscos_tw1.id_for_label }}" class="label label-primary">{{ form.Viscos_tw1.label }}</label>
+                    {{form.Viscos_tw1.errors}}
+                    {{form.Viscos_tw1}}                                                                    
                 </div>
             </div> 
-                        </div>
-                        <div class="col-md-4">                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                    Calculo 2
+        </div>
+        <div class="col-md-4">                
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Região Anular
+            </div>
+            <div class="panel-body">
+
+                    <label for="{{ form.Vazao2.id_for_label }}" class="label label-primary">{{ form.Vazao2.label }}</label>
+                    {{form.Vazao2.errors}}
+                    {{form.Vazao2}}
+                    <label for="{{ form.T_entr2.id_for_label }}" class="label label-primary">{{ form.T_entr2.label }}</label>
+                    {{form.T_entr2.errors}}
+                    {{form.T_entr2}}
+                    <label for="{{ form.T_said2.id_for_label }}" class="label label-primary">{{ form.T_said2.label }}</label>
+                    {{form.T_said2.errors}}
+                    {{form.T_said2}}
+                    <label for="{{ form.k2.id_for_label }}" class="label label-primary">{{ form.k2.label }}</label>
+                    {{form.k2.errors}}
+                    {{form.k2}}
+                    <label for="{{ form.cp2.id_for_label }}" class="label label-primary">{{ form.cp2.label }}</label>
+                    {{form.cp2.errors}} 
+                    {{form.cp2}}  
+                    <label for="{{ form.Pr2.id_for_label }}" class="label label-primary">{{ form.Pr2.label }}</label>
+                    {{form.Pr2.errors}}
+                    {{form.Pr2}}  
+                    <label for="{{ form.Viscosidade2.id_for_label }}" class="label label-primary">{{ form.Viscosidade2.label }}</label>
+                    {{form.Viscosidade2.errors}}
+                    {{form.Viscosidade2}}
+                    <label for="{{ form.Densidade2.id_for_label }}" class="label label-primary">{{ form.Densidade2.label }}</label>
+                    {{form.Densidade2.errors}}
+                    {{form.Densidade2}}
+                    <label for="{{ form.Diam_int2.id_for_label }}" class="label label-primary">{{ form.Diam_int2.label }}</label>
+                    {{form.Diam_int2.errors}}
+                    {{form.Diam_int2}}
+                    <label for="{{ form.Diam_ext2.id_for_label }}" class="label label-primary">{{ form.Diam_ext2.label }}</label>
+                    {{form.Diam_ext2.errors}}
+                    {{form.Diam_ext2}}
+                    <label for="{{ form.Viscos_tw2.id_for_label }}" class="label label-primary">{{ form.Viscos_tw2.label }}</label>
+                    {{form.Viscos_tw2.errors}}
+                    {{form.Viscos_tw2}}                                                                      
+
+                </div>
+            </div> 
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Material
                 </div>
                 <div class="panel-body">
-                    
-                        <label for="{{ form.Vazao2.id_for_label }}" class="label label-primary">{{ form.Vazao2.label }}</label>
-                        {{form.Vazao2}}
-                        <label for="{{ form.T_entr2.id_for_label }}" class="label label-primary">{{ form.T_entr2.label }}</label>
-                        {{form.T_entr2}}
-                        <label for="{{ form.T_said2.id_for_label }}" class="label label-primary">{{ form.T_said2.label }}</label>
-                        {{form.T_said2}}
-                        <label for="{{ form.k2.id_for_label }}" class="label label-primary">{{ form.k2.label }}</label>
-                        {{form.k2}}
-                        <label for="{{ form.cp2.id_for_label }}" class="label label-primary">{{ form.cp2.label }}</label>
-                        {{form.cp2}}  
-                        <label for="{{ form.Pr2.id_for_label }}" class="label label-primary">{{ form.Pr2.label }}</label>
-                        {{form.Pr2}}  
-                        <label for="{{ form.Viscosidade2.id_for_label }}" class="label label-primary">{{ form.Viscosidade2.label }}</label>
-                        {{form.Viscosidade2}}
-                        <label for="{{ form.Densidade2.id_for_label }}" class="label label-primary">{{ form.Densidade2.label }}</label>
-                        {{form.Densidade2}}
-                        <label for="{{ form.Diam_ext2.id_for_label }}" class="label label-primary">
-                        {{ form.Diam_ext2.label }}</label>
-                        {{form.Diam_ext2}}
-                        <label for="{{ form.Viscos_tw2.id_for_label }}" class="label label-primary">{{ form.Viscos_tw2.label }}</label>
-                        {{form.Viscos_tw2}}                                                                      
+                    <label for="{{ form.K.id_for_label }}" class="label label-primary">{{ form.K.label }}</label>
+                    {{form.K.errors}}
+                    {{form.K}}
+                    <label for="{{ form.L.id_for_label }}" class="label label-primary">{{ form.L.label }}</label>
+                    {{form.L.errors}}
+                    {{form.L}}
+                    <label for="{{ form.R_fi.id_for_label }}" class="label label-primary">{{ form.R_fi.label }}</label>
+                    {{form.R_fi.errors}}
+                    {{form.R_fi}}
+                    <label for="{{ form.R_fo.id_for_label }}" class="label label-primary">{{ form.R_fo.label }}</label>
+                    {{form.R_fo.errors}}
+                    {{form.R_fo}}
+                    <label for="{{ form.Calor_const.id_for_label }}" class="label label-primary">{{ form.Calor_const.label }}</label>
+                    {{form.Calor_const.errors}}
+                    {{form.Calor_const}}
+                    <label for="{{ form.Contracorrente.id_for_label }}" class="label label-primary">{{ form.Contracorrente.label }}</label>
+                    {{form.Contracorrente.errors}}
+                    {{form.Contracorrente}}
+                    <label for="{{ form.ef_b1.id_for_label }}" class="label label-primary">{{ form.ef_b1.label }}</label>
+                    {{form.ef_b1.errors}}
+                    {{form.ef_b1}}
+                    <label for="{{ form.ef_b2.id_for_label }}" class="label label-primary">{{ form.ef_b2.label }}</label>
+                    {{form.ef_b2.errors}}
+                    {{form.ef_b2}}
+                    <label for="{{ form.Alet_tubes.id_for_label }}" class="label label-primary">{{ form.Alet_tubes.label }}</label>
+                    {{form.Alet_tubes.errors}}
+                    {{form.Alet_tubes}}
+                    <label for="{{ form.Num_tubs.id_for_label }}" class="label label-primary">{{ form.Num_tubs.label }}</label>
+                    {{form.Num_tubs.errors}}
+                    {{form.Num_tubs}}
+                    <label for="{{ form.Alet_num.id_for_label }}" class="label label-primary">{{ form.Alet_num.label }}</label>
+                    {{form.Alet_num.errors}}
+                    {{form.Alet_num}}
+                    <label for="{{ form.Alet_alt.id_for_label }}" class="label label-primary">{{ form.Alet_alt.label }}</label>
+                    {{form.Alet_alt.errors}}
+                    {{form.Alet_alt}}
+                    <label for="{{ form.Alet_k.id_for_label }}" class="label label-primary">{{ form.Alet_k.label }}</label>
+                    {{form.Alet_k.errors}}
+                    {{form.Alet_k}}
+                    <label for="{{ form.Alet_esp.id_for_label }}" class="label label-primary">{{ form.Alet_esp.label }}</label>
+                    {{form.Alet_esp.errors}}
+                    {{form.Alet_esp}}
+                    <label for="{{ form.Alet_type.id_for_label }}" class="label label-primary">{{ form.Alet_type.label }}</label>
+                    {{form.Alet_type.errors}}
+                    {{form.Alet_type}}
+                    <label for="{{ form.Multi_tubes.id_for_label }}" class="label label-primary">{{ form.Multi_tubes.label }}</label>
+                    {{form.Multi_tubes.errors}}
+                    {{form.Multi_tubes}}
+                    <label for="{{ form.arranj_ser_paral.id_for_label }}" class="label label-primary">{{ form.arranj_ser_paral.label }}</label>
+                    {{form.arranj_ser_paral.errors}}
+                    {{form.arranj_ser_paral}}
+                    <label for="{{ form.T_I_Paralelo.id_for_label }}" class="label label-primary">{{ form.T_I_Paralelo.label }}</label>
+                    {{form.T_I_Paralelo.errors}}
+                    {{form.T_I_Paralelo}}
+                    <label for="{{ form.R_A_Paralelo.id_for_label }}" class="label label-primary">{{ form.R_A_Paralelo.label }}</label>
+                    {{form.R_A_Paralelo.errors}}
+                    {{form.R_A_Paralelo}}
+                    <label for="{{ form.Num_ramos.id_for_label }}" class="label label-primary">{{ form.Num_ramos.label }}</label>
+                    {{form.Num_ramos.errors}}
+                    {{form.Num_ramos}}
+
 
                 </div>
-                </div> 
-                </div>
-                        <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                    Calculo 3
-                    </div>
-                        <div class="panel-body">
-                        <label for="{{ form.K.id_for_label }}" class="label label-primary">{{ form.K.label }}</label>
-                        {{form.K}}
-                        <label for="{{ form.R.id_for_label }}" class="label label-primary">{{ form.R.label }}</label>
-                        {{form.R}}
-                        <label for="{{ form.R_fi.id_for_label }}" class="label label-primary">{{ form.R_fi.label }}</label>
-                        {{form.R_fi}}
-                        <label for="{{ form.R_fo.id_for_label }}" class="label label-primary">{{ form.R_fo.label }}</label>
-                        {{form.R_fo}}
-                        <label for="{{ form.Calor_const.id_for_label }}" class="label label-primary">{{ form.Calor_const.label }}</label>
-                        {{form.Calor_const}}
-                        <label for="{{ form.Contracorrente.id_for_label }}" class="label label-primary">{{ form.Contracorrente.label }}</label>
-                        {{form.Contracorrente}}
-                         <label for="{{ form.ef_b1.id_for_label }}" class="label label-primary">{{ form.ef_b1.label }}</label>
-                        {{form.ef_b1}}
-                        <label for="{{ form.ef_b2.id_for_label }}" class="label label-primary">{{ form.ef_b2.label }}</label>
-                        {{form.ef_b2}}
-                         <label for="{{ form.Num_tubs.id_for_label }}" class="label label-primary">{{ form.Num_tubs.label }}</label>
-                        {{form.Num_tubs}}
-                        <label for="{{ form.Alet_alt.id_for_label }}" class="label label-primary">{{ form.Alet_alt.label }}</label>
-                        {{form.Alet_alt}}
-                        <label for="{{ form.Alet_k.id_for_label }}" class="label label-primary">{{ form.Alet_k.label }}</label>
-                        {{form.Alet_k}}
-                        <label for="{{ form.Alet_esp.id_for_label }}" class="label label-primary">{{ form.Alet_esp.label }}</label>
-                        {{form.Alet_esp}}
-                        <label for="{{ form.Alet_type.id_for_label }}" class="label label-primary">{{ form.Alet_type.label }}</label>
-                        {{form.Alet_type}}
-                        <label for="{{ form.Alet_tubes.id_for_label }}" class="label label-primary">{{ form.Alet_tubes.label }}</label>
-                        {{form.Alet_tubes}}
-                        <label for="{{ form.Multi_tubes.id_for_label }}" class="label label-primary">{{ form.Multi_tubes.label }}</label>
-                        {{form.Multi_tubes}}
-                        <label for="{{ form.arranj_ser_paral.id_for_label }}" class="label label-primary">{{ form.arranj_ser_paral.label }}</label>
-                        {{form.arranj_ser_paral}}
-                        <label for="{{ form.T_I_Paralelo.id_for_label }}" class="label label-primary">{{ form.T_I_Paralelo.label }}</label>
-                        {{form.T_I_Paralelo}}
-                        <label for="{{ form.R_A_Paralelo.id_for_label }}" class="label label-primary">{{ form.R_A_Paralelo.label }}</label>
-                        {{form.R_A_Paralelo}}
-                        <label for="{{ form.Num_ramos.id_for_label }}" class="label label-primary">{{ form.Num_ramos.label }}</label>
-                        {{form.Num_ramos}}
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" role="button">Calcular</button>  
+
+</form>
+<p>Status: {{Vazao1}}</p>
 
 
-                        
-                    </div>
-                </div>
-                </div>
-                    </div>
-       
-       
-
-  
-
-        
-
-
-
-
-              <button type="submit" class="btn btn-primary" role="button">Calcular</button> 
-        
-    </form>
-    
 {% endblock %}        
-       
