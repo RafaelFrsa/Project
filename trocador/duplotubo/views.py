@@ -47,7 +47,8 @@ from trocador.duplotubo.forms import *
 
 def calculo_duplotubo(request):
 	#import pdb; pdb.set_trace()
-	form = Calculo(request.POST)
+	exibition = Resultado()
+	form = Calculo(request.POST or None)
 	if form.is_valid():
 		resultado = yut(# Fluido1
 			{'Vazao':form.cleaned_data['Vazao1'],
@@ -98,19 +99,14 @@ def calculo_duplotubo(request):
 			'T_I_Paralelo':form.cleaned_data['T_I_Paralelo'],
 			'R_A_Paralelo':form.cleaned_data['R_A_Paralelo'],
 			'Num_ramos':form.cleaned_data['Num_ramos']})
-		#result=str(resultado)
+ 		
 		res = Resultado()
-		res.resultado = resultado
+		res.result_dpl_tubo = resultado
 		res.save()
-	context = {'form': form}
+		exibition = res.result_dpl_tubo
+		
+	context = {'form': form,
+				'model': exibition,}
 
 	return render(request, 'calculo_duplotubo.html', context)
 
-
-
-def Formulario(request):
-	form = ChoiceForm(request.POST or None)
-
-	if request.method == 'POST':
-		form.save()
-	return render(request, 'modelform.html', {'form':form})

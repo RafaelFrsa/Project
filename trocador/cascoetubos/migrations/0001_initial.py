@@ -47,8 +47,8 @@ class Migration(migrations.Migration):
             name='Choice',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Agua', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='duplotubo.Agua')),
-                ('Butano', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='duplotubo.Butano')),
+                ('Agua', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cascoetubos.Agua')),
+                ('Butano', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cascoetubos.Butano')),
             ],
         ),
         migrations.CreateModel(
@@ -103,27 +103,27 @@ class Migration(migrations.Migration):
             name='Resultado',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('result_dpl_tubo', models.CharField(max_length=7000, verbose_name='Resultado Duplo Tubo:')),
+                ('result_casc_tb', models.CharField(max_length=7000, verbose_name='Resultado Casco e Tubos:')),
             ],
         ),
         migrations.AddField(
             model_name='choice',
             name='CO2',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='duplotubo.CO2'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cascoetubos.CO2'),
         ),
         migrations.AddField(
             model_name='choice',
             name='Metano',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='duplotubo.Metano'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cascoetubos.Metano'),
         ),
         migrations.AddField(
             model_name='choice',
             name='Pentano',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='duplotubo.Pentano'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cascoetubos.Pentano'),
         ),
         migrations.AddField(
             model_name='choice',
             name='RC318',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='duplotubo.RC318'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cascoetubos.RC318'),
         ),
     ]

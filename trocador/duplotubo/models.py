@@ -77,5 +77,5 @@ class Choice(models.Model):
 
 
 class Resultado(models.Model):
-	resultado = models.CharField(max_length=7000)	
+	result_dpl_tubo = models.CharField('Resultado Duplo Tubo:', max_length=7000)	
 

@@ -8,7 +8,7 @@
     <div class="form-group">
       {% csrf_token %}
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                 Tubo Interno
@@ -50,8 +50,9 @@
                     {{form.Viscos_tw1}}                                                                    
                 </div>
             </div> 
+
         </div>
-        <div class="col-md-4">                
+        <div class="col-md-3">                
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Região Anular
@@ -95,7 +96,7 @@
                 </div>
             </div> 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Material
@@ -162,16 +163,21 @@
                     {{form.Num_ramos.errors}}
                     {{form.Num_ramos}}
 
-
+                
                 </div>
             </div>
+
         </div>
+       
     </div>
+
+
 
     <button type="submit" class="btn btn-primary" role="button">Calcular</button>  
 
+
 </form>
-<p>Status: {{Vazao1}}</p>
+
 
 
 {% endblock %}        
