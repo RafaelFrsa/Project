@@ -23,32 +23,32 @@ class Calculo(forms.Form):
 			}
 			)
 		) 
-	cp1 = forms.FloatField(label='Capacidade calorífica_banco',
+	cp1 = forms.FloatField(label='Capacidade calorífica_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
  		)
-	k1 = forms.FloatField(label='Condutividade Térmica_banco',
+	k1 = forms.FloatField(label='Condutividade Térmica_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 		) 
 
-	Pr1 = forms.FloatField(label='Número de Prandtl',
+	Pr1 = forms.FloatField(label='Número de Prandtl',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 		)  
-	Viscosidade1 = forms.FloatField(label='Viscosidade_banco',
+	Viscosidade1 = forms.FloatField(label='Viscosidade_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 		) 
-	Densidade1 = forms.FloatField(label='Densidade_banco',
+	Densidade1 = forms.FloatField(label='Densidade_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
@@ -67,7 +67,7 @@ class Calculo(forms.Form):
 			)
 		) 
 	 
-	Viscos_tw1 = forms.FloatField(label='Vazão',
+	Viscos_tw1 = forms.FloatField(label='Viscosidade_da_temp_parede_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
@@ -93,32 +93,32 @@ class Calculo(forms.Form):
 			}
 			)
 		) 
-	cp2 = forms.FloatField(label='cp',
+	cp2 = forms.FloatField(label='cp',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 		) 
-	k2 = forms.FloatField(label='Condutividade Térmica_banco',
+	k2 = forms.FloatField(label='Condutividade Térmica_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 		)  
-	Pr2 = forms.FloatField(label='Pr',
+	Pr2 = forms.FloatField(label='Pr',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 		) 
-	Viscosidade2 = forms.FloatField(label='Viscosidade', 
+	Viscosidade2 = forms.FloatField(label='Viscosidade', required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 		) 
 	
-	Densidade2 = forms.FloatField(label='Densidade_banco',
+	Densidade2 = forms.FloatField(label='Densidade_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
@@ -136,7 +136,7 @@ class Calculo(forms.Form):
 			}
 			)
 		)
-	Viscos_tw2 = forms.FloatField(label='Viscosidade_da_temp_parede_banco',
+	Viscos_tw2 = forms.FloatField(label='Viscosidade_da_temp_parede_banco',required=False,
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}

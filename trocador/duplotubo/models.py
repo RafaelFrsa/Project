@@ -7,13 +7,12 @@ from django.db import models
 
 class Agua(models.Model):
 	
-	temperature = models.FloatField('Temperatura')
-	pressure = models.FloatField('Pressao')
-	density= models.FloatField('Densidade')
+	temp = models.FloatField('Temperatura')
+	press = models.FloatField('Pressao')
+	densidade= models.FloatField('Densidade')
 	cp = models.FloatField('CP', blank=True)
-	viscosity = models.FloatField('Viscosidade')
+	Viscos = models.FloatField('Viscosidade')
 	k = models.FloatField('k', blank=True)
-	kt = models.BooleanField()
 
 	class Meta:
 		verbose_name='Agua'

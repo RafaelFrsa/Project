@@ -14,6 +14,7 @@
                 Tubo Interno
                 </div>
                 <div class="panel-body">
+                    <div>{{form.nome_fluido1}}</div>
 
                     <label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
                     {{form.Vazao1.errors}} 
@@ -58,7 +59,7 @@
                 Região Anular
             </div>
             <div class="panel-body">
-
+                    <div>{{form.nome_fluido2}}</div>
                     <label for="{{ form.Vazao2.id_for_label }}" class="label label-primary">{{ form.Vazao2.label }}</label>
                     {{form.Vazao2.errors}}
                     {{form.Vazao2}}

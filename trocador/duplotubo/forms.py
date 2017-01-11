@@ -4,14 +4,21 @@ from django.forms import ModelForm
 from trocador.duplotubo.models import Agua, Butano, CO2, Metano, Pentano, Choice, RC318
 
 Opcoes = (
-    (0, 'Sim'),
-    (1, 'Não'),
+	('', 'Manual'),
+    ('duplotubo_agua', 'Agua'),
+    ('Butano', 'Butano'),
+    ('CO2', 'CO2'), 
+    ('Metano', 'Metano'),
+    ('Pentano', 'Pentano'),   
+    ('RC318', 'RC318'),     
     
 )
 
 
 class Calculo(forms.Form):
 
+	 nome_fluido1 = forms.ChoiceField(label='Material', choices=Opcoes, required=False)
+	 nome_fluido2 = forms.ChoiceField(label='Material', choices=Opcoes, required=False)
 	 Vazao1 = forms.FloatField(label='Vazão',
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
@@ -30,31 +37,31 @@ class Calculo(forms.Form):
 			}
 			)
 	 )   
-	 k1 = forms.FloatField(label='Condutividade Térmica_banco',
+	 k1 = forms.FloatField(label='Condutividade Térmica_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )   
-	 cp1 = forms.FloatField(label='Capacidade calorífica_banco',
+	 cp1 = forms.FloatField(label='Capacidade calorífica_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )   
-	 Pr1 = forms.FloatField(label='Número de Prandtl',
+	 Pr1 = forms.FloatField(label='Número de Prandtl',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )   
-	 Viscosidade1 = forms.FloatField(label='Viscosidade_banco',
+	 Viscosidade1 = forms.FloatField(label='Viscosidade_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )   
-	 Densidade1 = forms.FloatField(label='Densidade_banco',
+	 Densidade1 = forms.FloatField(label='Densidade_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
@@ -72,7 +79,7 @@ class Calculo(forms.Form):
 			}
 			)
 	 )   
-	 Viscos_tw1 = forms.FloatField(label='Viscosidade_da_temp_parede_banco',
+	 Viscos_tw1 = forms.FloatField(label='Viscosidade_da_temp_parede_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
@@ -96,31 +103,31 @@ class Calculo(forms.Form):
 			}
 			)
 	 )    
-	 k2 = forms.FloatField(label='Condutividade Térmica_banco',
+	 k2 = forms.FloatField(label='Condutividade Térmica_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )    
-	 cp2 = forms.FloatField(label='Capacidade calorífica_banco',
+	 cp2 = forms.FloatField(label='Capacidade calorífica_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )    
-	 Pr2 = forms.FloatField(label='Número de Prandtl',
+	 Pr2 = forms.FloatField(label='Número de Prandtl',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )   
-	 Viscosidade2 = forms.FloatField(label='Viscosidade_banco',
+	 Viscosidade2 = forms.FloatField(label='Viscosidade_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)
 	 )   
-	 Densidade2 = forms.FloatField(label='Densidade_banco',
+	 Densidade2 = forms.FloatField(label='Densidade_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
@@ -138,7 +145,7 @@ class Calculo(forms.Form):
 			}
 			)
 	 )   
-	 Viscos_tw2 = forms.FloatField(label='Viscosidade_da_temp_parede_banco',
+	 Viscos_tw2 = forms.FloatField(label='Viscosidade_da_temp_parede_banco',required=False,
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
@@ -228,7 +235,12 @@ class Calculo(forms.Form):
 			attrs={"class":"form-control"
 			}
 			)
-	 )   
+	 )  
+
+
+
+
+
 
 class ChoiceForm(ModelForm):
     class Meta:

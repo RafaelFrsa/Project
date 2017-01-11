@@ -53,8 +53,8 @@ def calculo_cascoetubos(request):
 			'Num_pass_tb':form.cleaned_data['Num_pass_tb'],
 			'Pt':form.cleaned_data['Pt'],
 			'Num_passes_casco':form.cleaned_data['Num_passes_casco'],
-			'Efic_bomb1':form.cleaned_data['ef_b1'],
-			'Efic_bomb2':form.cleaned_data['ef_b2']})
+			'Efic_bomb1':form.cleaned_data['Efic_bomb1'],
+			'Efic_bomb2':form.cleaned_data['Efic_bomb2']})
 			
 
 		res = Resultado()
