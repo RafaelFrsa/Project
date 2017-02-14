@@ -4,9 +4,10 @@ from django.http import HttpResponse
 from trocador.cascoetubos.casc_tubo_cal import *;
 from trocador.cascoetubos.models import *
 from trocador.cascoetubos.forms import *
+from django.contrib.auth.decorators import login_required
 
 
-
+@login_required
 def calculo_cascoetubos(request):
 	#import pdb; pdb.set_trace()
 	form = Calculo(request.POST)

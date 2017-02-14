@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
-{% block content %}	   
+{% block content %}	  
+          <ul class="nav nav-tabs">
+              <li role="presentation" class="active"><a href="{% url 'duplotubo:calculo_duplotubo' %}">Duplo Tubo</a></li>
+              <li role="presentation" ><a href="{% url 'cascoetubos:calculo_cascoetubos' %}">Casco e Tubos</a></li>
+          </ul> 
 
 <br>
 

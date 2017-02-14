@@ -7,8 +7,10 @@ from trocador.duplotubo.forms import *
 from django.db import connection
 import sqlite3
 #from trocador.duplotubo.test002 import *
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def propried_get(temp_m,temp_w,table,fluido):
 	con = sqlite3.connect('db.sqlite3');
 	cur = con.cursor();
@@ -45,7 +47,7 @@ def propried_get(temp_m,temp_w,table,fluido):
 	    fluido['Pr']=fluido['cp']*fluido['Viscos']/fluido['k']
 	return fluido
 
-
+@login_required
 def calculo_duplotubo(request):
 	#import pdb; pdb.set_trace()
 	exibition = Resultado()

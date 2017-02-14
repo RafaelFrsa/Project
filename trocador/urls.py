@@ -19,6 +19,7 @@ from django.contrib import admin
 
 urlpatterns = [
 	url(r'', include('trocador.core.urls', namespace='core')),
+    url(r'^conta/', include('trocador.accounts.urls', namespace='accounts')),
 	url(r'duplotubo/', include('trocador.duplotubo.urls', namespace='duplotubo')),
 	url(r'cascoetubos/', include('trocador.cascoetubos.urls', namespace='cascoetubos')),
     url(r'^admin/', admin.site.urls),

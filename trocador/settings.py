@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'trocador.core', 
+    'trocador.core',
+    'trocador.accounts', 
     'trocador.duplotubo',  
     'trocador.cascoetubos'
 ]
@@ -134,3 +135,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'core:home'
+LOGOUT_URL = 'accounts:logout'

@@ -3,6 +3,10 @@
 {% block content %}    
 
 <br>
+          <ul class="nav nav-tabs">
+              <li role="presentation" class="active"><a href="{% url 'duplotubo:calculo_duplotubo' %}">Duplo Tubo</a></li>
+              <li role="presentation" ><a href="{% url 'cascoetubos:calculo_cascoetubos' %}">Casco e Tubos</a></li>
+          </ul>
 
 <form method="POST" class="post-form">
     <div class="form-group">
