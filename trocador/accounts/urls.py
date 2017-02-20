@@ -10,6 +10,7 @@ urlpatterns = [
 		url(r'^sair/$', auth_views.logout, 
 			{'next_page': 'core:home'}, name='logout'),
 		url(r'^cadastre-se/$', views.register, name='register'),
+		url(r'^nova_senha/$', views.password_reset, name='password_reset'),
 		url(r'^editar/$', views.edit, name='edit'),
 		url(r'^editar_senha/$', views.edit_password, name='edit_password'),
 ]
