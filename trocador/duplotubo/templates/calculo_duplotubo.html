@@ -20,9 +20,11 @@
                 <div class="panel-body">
                     <div>{{form.nome_fluido1}}</div>
 
-                    <label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
-                    {{form.Vazao1.errors}} 
-                    {{form.Vazao1}}
+                    <div id="agua">
+                    	<label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
+	                    {{form.Vazao1.errors}} 
+	                    {{form.Vazao1}}
+                    </div>
                     <label for="{{ form.T_entr1.id_for_label }}" class="label label-primary">{{ form.T_entr1.label }}</label>
                     {{form.T_entr1.errors}}
                     {{form.T_entr1}}

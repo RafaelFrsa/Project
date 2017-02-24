@@ -17,8 +17,16 @@ Opcoes = (
 
 class Calculo(forms.Form):
 
-	 nome_fluido1 = forms.ChoiceField(label='Material', choices=Opcoes, required=False)
-	 nome_fluido2 = forms.ChoiceField(label='Material', choices=Opcoes, required=False)
+	 nome_fluido1 = forms.ChoiceField(label='Material', choices=Opcoes, required=False, 
+	 		widget=forms.Select(
+	 		attrs={'class':'btn btn-default dropdown-toggle'}
+	 		)
+	 	)
+	 nome_fluido2 = forms.ChoiceField(label='Material', choices=Opcoes, required=False,
+	 	widget=forms.Select(
+	 		attrs={'class':'btn btn-default dropdown-toggle'}
+	 		)
+	 	)
 	 Vazao1 = forms.FloatField(label='Vazão',
 	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
@@ -26,7 +34,7 @@ class Calculo(forms.Form):
 			)
 	 ) 
 	 T_entr1 = forms.FloatField(label='Temperatura de Entrada',
-	 	widget=forms.NumberInput(
+	 		widget=forms.NumberInput(
 			attrs={"class":"form-control"
 			}
 			)

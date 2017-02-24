@@ -7,7 +7,7 @@ from trocador.core.utils import generate_hash_key
 from .forms import RegisterForm, EditAccountForm, PasswordResetForm
 from .models import PasswordReset
 
-Uset = get_user_model()
+User = get_user_model()
 
 @login_required
 def dashboard(request):
@@ -41,7 +41,7 @@ def password_reset(request):
     if form.is_valid():
         user = User.objects.get(email=form.cleaned_data['email'])
         key = generate_hash_key(user.username)
-        reset = PasswordResetForm(key=key, user=user)
+        reset = PasswordChangeForm(key=key, user=user)
         reset.save()
         context['success'] = True
     context['form'] = form
