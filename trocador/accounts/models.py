@@ -12,7 +12,7 @@ from django.conf import settings
 class User(AbstractBaseUser, PermissionsMixin):
 
 	username = models.CharField(
-         'Nome de Usuário', max_length=30, unique=True, 
+         u'Nome de Usu\xe1rio', max_length=30, unique=True, 
          validators=[validators.RegexValidator(re.compile('^[\w.@+-]+$'),
              'O nome de usuário só pode conter letras, digitos ou os '
              'seguintes caracteres: @/./+/-/_', 'invalid')]

@@ -10,7 +10,7 @@ import sqlite3
 from django.contrib.auth.decorators import login_required
 
 
-@login_required
+
 def propried_get(temp_m,temp_w,table,fluido):
 	con = sqlite3.connect('db.sqlite3');
 	cur = con.cursor();
@@ -55,8 +55,6 @@ def calculo_duplotubo(request):
 	if form.is_valid():
 		if True:#bool(nome_fluido1) or bool(nome_fluido2):
 			cur=sqlite3.connect('db.sqlite3').cursor()
-			diuty=cur.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall()
-			fer=cur.execute("SELECT * FROM %s WHERE id=2;"%tuple([u'duplotubo_agua'])).fetchall()
 			dic1={'k':0,'cp':0,'Pr':0,'Viscos':0,'Viscos_tw':0}
 			dic2={'k':0,'cp':0,'Pr':0,'Viscos':0,'Viscos_tw':0}
 			temp_m1=(form.cleaned_data['T_entr1']+form.cleaned_data['T_said1'])/2

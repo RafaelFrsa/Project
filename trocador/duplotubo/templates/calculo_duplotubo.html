@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
-{% block content %}	  
+{% block content %}	
+ <div class="content"> 
           <ul class="nav nav-tabs">
               <li role="presentation" class="active"><a href="{% url 'duplotubo:calculo_duplotubo' %}">Duplo Tubo</a></li>
               <li role="presentation" ><a href="{% url 'cascoetubos:calculo_cascoetubos' %}">Casco e Tubos</a></li>
@@ -18,13 +19,14 @@
                 Tubo Interno
                 </div>
                 <div class="panel-body">
-                    <div>{{form.nome_fluido1}}</div>
+                    <div>
+                 
+                    	{{form.nome_fluido1}}
 
-                    <div id="agua">
-                    	<label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
-	                    {{form.Vazao1.errors}} 
-	                    {{form.Vazao1}}
-                    </div>
+                    </div>  
+                    <label for="{{ form.Vazao1.id_for_label }}" class="label label-primary">{{ form.Vazao1.label }}</label>
+	                {{form.Vazao1.errors}} 
+	                {{form.Vazao1}}
                     <label for="{{ form.T_entr1.id_for_label }}" class="label label-primary">{{ form.T_entr1.label }}</label>
                     {{form.T_entr1.errors}}
                     {{form.T_entr1}}
@@ -39,7 +41,7 @@
                     {{form.cp1}}  
                     <label for="{{ form.Pr1.id_for_label }}" class="label label-primary">{{ form.Pr1.label }}</label>
                     {{form.Pr1.errors}} 
-                    {{form.Pr1}}  
+                    {{form.Pr1}}
                     <label for="{{ form.Viscosidade1.id_for_label }}" class="label label-primary">{{ form.Viscosidade1.label }}</label>
                     {{form.Viscosidade1.errors}}
                     {{form.Viscosidade1}}
@@ -54,7 +56,8 @@
                     {{form.Diam_ext1}}
                     <label for="{{ form.Viscos_tw1.id_for_label }}" class="label label-primary">{{ form.Viscos_tw1.label }}</label>
                     {{form.Viscos_tw1.errors}}
-                    {{form.Viscos_tw1}}<br>                                                                    
+                    {{form.Viscos_tw1}}
+                    <br>                                                                    
                 </div>
             </div> 
 
@@ -65,7 +68,9 @@
                 Região Anular
             </div>
             <div class="panel-body">
-                    <div>{{form.nome_fluido2}}</div>
+                    <div>
+                    {{form.nome_fluido2}}
+                    </div>
                     <label for="{{ form.Vazao2.id_for_label }}" class="label label-primary">{{ form.Vazao2.label }}</label>
                     {{form.Vazao2.errors}}
                     {{form.Vazao2}}
@@ -186,16 +191,56 @@
             </div>
 
         </div>
+         
+	<div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Resultado
+                </div>
+                <div class="panel-body">
 
+ 					{{model}} 
+
+                </div>
+            </div>
+
+        </div>
        
     </div>
 
-
-
-    <button type="submit" class="btn btn-primary" role="button">Calcular</button>  
-
-
+   <button type="submit" class="btn btn-primary" role="button">Calcular</button>  
 </form>
+
+          <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+                <h4>Dúvidas sobre a plataforma</h4>
+                <p>
+                    <table>
+                        <tr>
+                            <td>a</td>
+                            <td>b</td>
+                            <td>c</td>
+                        </tr>
+
+                        {% for key, values in {'a': [ [1, 2] ], 'b': [ [3, 4] ],'c':[ [5,6]] } %}
+                        <tr>
+                            <td>{{key}}</td>
+                            {% for v in values[0] %}
+                            <td>{{v}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </p>
+
+                <h4>Mais Informações</h4>
+                <p>
+                <p>
+                   {{model}} 
+                </p>
+                </p>
+            </div>
+        </div>
+</div>
 
 
 

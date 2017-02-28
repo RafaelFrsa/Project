@@ -53,13 +53,13 @@ def edit(request):
     template_name = 'accounts/edit.html'
     context = {}
     if request.method == 'POST':
-        form = EditAccount(request.POST, instance=request.user)
+        form = EditAccountForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            form = EditAccount(instance=request.user)
+            form = EditAccountForm(instance=request.user)
             context['success'] = True
     else:
-        form = EditAccount(instance=request.user)
+        form = EditAccountForm(instance=request.user)
     context['form'] = form
     return render(request, template_name, context)
 

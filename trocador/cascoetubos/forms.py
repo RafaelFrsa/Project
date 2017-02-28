@@ -1,10 +1,33 @@
 #-*- coding: cp1252 -*- 
 from django import forms
+from django.forms import ModelForm
+from trocador.cascoetubos.models import Agua, Butano, CO2, Metano, Pentano, Choice, RC318
+
+Opcoes = (
+	('', 'Manual'),
+    ('duplotubo_agua', u'\xc1gua'),
+    ('duplotubo_butano', 'Butano'),
+    ('duplotubo_co2', 'CO2'), 
+    ('duplotubo_metano', 'Metano'),
+    ('duplotubo_pentano', 'Pentano'),   
+    ('duplotubo_rc318', 'RC318'),     
+    
+)
 
 
 class Calculo(forms.Form):
 
 	# Fluido 1
+	nome_fluido1 = forms.ChoiceField(label='Material', choices=Opcoes, required=False, 
+	 		widget=forms.Select(
+	 		attrs={'class':'btn btn-default dropdown-toggle', 'type':'button', 'role':'separator'}
+	 		)
+	 	)
+	nome_fluido2 = forms.ChoiceField(label='Material', choices=Opcoes, required=False,
+	 	widget=forms.Select(
+	 		attrs={'class':'btn btn-default dropdown-toggle'}
+	 		)
+	 	)
 	Vazao1 = forms.FloatField(label='Vazão',
 		widget=forms.NumberInput(
 			attrs={"class":"form-control"

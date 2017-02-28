@@ -82,13 +82,14 @@ WSGI_APPLICATION = 'trocador.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'propriedades',
+#         'NAME': 'properties',
 #         'USER': 'postgres',
 #         'PASSWORD': 'delta',
 #         'HOST': 'localhost',
 #         'PORT': '5432',
 #     }
-# # }
+#  }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

@@ -13,7 +13,6 @@ class Agua(models.Model):
 	cp = models.FloatField('CP', blank=True)
 	viscosity = models.FloatField('Viscosidade')
 	k = models.FloatField('k', blank=True)
-	kt = models.BooleanField()
 
 	class Meta:
 		verbose_name='Agua'

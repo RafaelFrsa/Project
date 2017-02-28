@@ -4,8 +4,42 @@ $("#id_nome_fluido1").on("change", function (){
 	if ($("#id_nome_fluido1").val() == "duplotubo_agua") {
 		// Essa função "toogle()" esconde ou mostra um elemento dependendo do seu estado atual,
 		// se esta escondido, mostra, se esta visivel, esconde
-		$("#agua").toggle();
+		$("#id_k1").prop('disabled', true);
+		$("#id_cp1").prop('disabled', true);
+		$("#id_Pr1").prop('disabled', true);
+		$("#id_Densidade1").prop('disabled', true);
+		$("#id_Viscosidade1").prop('disabled', true);
+		$("#id_Viscos_tw1").prop('disabled', true);
 	} else {
-		$("#agua").toggle();
+		$("#id_k1").prop('disabled', false);
+		$("#id_cp1").prop('disabled', false);
+		$("#id_Pr1").prop('disabled', false);
+		$("#id_Densidade1").prop('disabled', false);
+		$("#id_Viscosidade1").prop('disabled', false);
+		$("#id_Viscos_tw1").prop('disabled', false);
+
 	};
 });
+
+$("#id_nome_fluido2").on("change", function (){
+	// Se o valor selecionado no campo for igual a duplotubo_agua esconde o campo id_Vazao1
+	if ($("#id_nome_fluido2").val() == "duplotubo_agua") {
+		// Essa função "toogle()" esconde ou mostra um elemento dependendo do seu estado atual,
+		// se esta escondido, mostra, se esta visivel, esconde
+		$("#id_k2").prop('disabled', true);
+		$("#id_cp2").prop('disabled', true);
+		$("#id_Pr2").prop('disabled', true);
+		$("#id_Densidade2").prop('disabled', true);
+		$("#id_Viscosidade2").prop('disabled', true);
+		$("#id_Viscos_tw2").prop('disabled', true);
+	} else {
+		$("#id_k2").prop('disabled', false);
+		$("#id_cp2").prop('disabled', false);
+		$("#id_Pr2").prop('disabled', false);
+		$("#id_Densidade2").prop('disabled', false);
+		$("#id_Viscosidade2").prop('disabled', false);
+		$("#id_Viscos_tw2").prop('disabled', false);
+
+	};
+});
+
