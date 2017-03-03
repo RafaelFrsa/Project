@@ -1,4 +1,4 @@
-#-*- coding: cp1252 -*- 
+# -*- coding: utf-8 -*-
 
 from django import forms
 from django.forms import ModelForm
@@ -6,7 +6,7 @@ from trocador.duplotubo.models import Agua, Butano, CO2, Metano, Pentano, Choice
 
 Opcoes = (
 	('', 'Manual'),
-    ('duplotubo_agua', u'\xc1gua'),
+    ('duplotubo_agua', 'Água'),
     ('duplotubo_butano', 'Butano'),
     ('duplotubo_co2', 'CO2'), 
     ('duplotubo_metano', 'Metano'),

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'trocador.core',
+    'trocador.contact',
     'trocador.accounts', 
     'trocador.duplotubo',  
     'trocador.cascoetubos'
@@ -138,16 +139,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = '<meugmail@gmail.com>'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'meuemail@gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'meugmail@gmail.com'
-EMAIL_HOST_PASSWORD = 'minhasenha'
+EMAIL_HOST_USER = 'meuemail@gmail.com'
+EMAIL_HOST_PASSWORD = 'mypassword'
 EMAIL_PORT = 587
 
-CONTACT_EMAIL ='rafael5.rfrs@gmail.com'
+CONTACT_EMAIL ='myemail@gmail.com'
 
 LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'core:home'

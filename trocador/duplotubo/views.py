@@ -51,6 +51,7 @@ def propried_get(temp_m,temp_w,table,fluido):
 def calculo_duplotubo(request):
 	#import pdb; pdb.set_trace()
 	exibition = Resultado()
+	
 	form = Calculo(request.POST or None)
 	if form.is_valid():
 		if True:#bool(nome_fluido1) or bool(nome_fluido2):
@@ -118,6 +119,8 @@ def calculo_duplotubo(request):
 		res.result_dpl_tubo = resultado
 		res.save()
 		exibition = res.result_dpl_tubo
+		
+
 		
 	context = {'form': form,
 				'model': exibition,}

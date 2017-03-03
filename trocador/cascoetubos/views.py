@@ -51,6 +51,7 @@ def calculo_cascoetubos(request):
 	#import pdb; pdb.set_trace()
 	exibition = Resultado()
 	form = Calculo(request.POST or None)
+	
 	if form.is_valid():
 		if True:#bool(nome_fluido1) or bool(nome_fluido2):
 			cur=sqlite3.connect('db.sqlite3').cursor()

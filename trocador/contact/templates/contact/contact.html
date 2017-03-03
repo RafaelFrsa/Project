@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="ribbon l-box-lrg pure-g">
+        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+            <img class="pure-img-responsive" alt="File Icons" width="300" src=" ">
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+            <h2 class="content-head content-head-ribbon">Laboris nisi ut aliquip.</h2>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor.
+            </p>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2 class="content-head is-center">Dolore magna aliqua. Uis aute irure.</h2>
+
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5" id='contato'>
+            <div class="pure-u-1">
+            <h3>Tire sua dúvida sobre a plataforma</h3>
+            {% if is_valid %}
+            <p><strong>Você enviou o formulário com sucesso</strong></p>
+            {% endif %}
+            <form action="#contato" class="pure-form pure-form-stacked" method="POST">
+                {% csrf_token %}
+                    <fieldset>
+
+                {% for field in form %}
+                <div class="pure-control-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                    <div class="pure-controls">
+                        <button type="submit" class="pure-button">Enviar</button>
+                    </div>    
+                    </fieldset>
+                </form>
+                </div>
+
+            </div>
+            
+
+            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+                <h4>Dúvidas sobre a plataforma</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+
+                <h4>Mais Informações</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
