@@ -51,7 +51,7 @@ def propried_get(temp_m,temp_w,table,fluido):
 def calculo_duplotubo(request):
 	#import pdb; pdb.set_trace()
 	exibition = Resultado()
-	
+	template_name = 'duplotubo/calculo_duplotubo.html'
 	form = Calculo(request.POST or None)
 	if form.is_valid():
 		if True:#bool(nome_fluido1) or bool(nome_fluido2):
@@ -125,7 +125,7 @@ def calculo_duplotubo(request):
 	context = {'form': form,
 				'model': exibition,}
 
-	return render(request, 'calculo_duplotubo.html', context)
+	return render(request, template_name, context)
 
 
 # Create your views here.

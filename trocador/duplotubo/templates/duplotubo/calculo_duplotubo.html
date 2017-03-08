@@ -193,38 +193,25 @@
         </div>
          
 	<div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Resultado
-                </div>
-                <div class="panel-body">
-
- 					{{model}} 
-
-                </div>
+           <div class="panel-group" id="accordion">
+            <div class="panel panel-primary"">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Resultados                      
+                  <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">{{model}}</div>
+              </div>
             </div>
-
-        </div>
-       
     </div>
 
    <button type="submit" class="btn btn-primary" role="button">Calcular</button>  
 </form>
 
-          <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-                <h4>Dúvidas sobre a plataforma</h4>
-                <p>
 
-                </p>
-
-                <h4>Mais Informações</h4>
-                <p>
-                <p>
-                   {{model}} 
-                </p>
-                </p>
-            </div>
-        </div>
+    </div>
 </div>
 
 

@@ -51,7 +51,7 @@ def calculo_cascoetubos(request):
 	#import pdb; pdb.set_trace()
 	exibition = Resultado()
 	form = Calculo(request.POST or None)
-	
+	template_name = 'cascoetubos/calculo_cascoetubos.html'
 	if form.is_valid():
 		if True:#bool(nome_fluido1) or bool(nome_fluido2):
 			cur=sqlite3.connect('db.sqlite3').cursor()
@@ -117,7 +117,7 @@ def calculo_cascoetubos(request):
 	context = {'form': form,
 				'model': exibition,}
 
-	return render(request, 'calculo_cascoetubos.html', context)
+	return render(request, template_name, context)
 
 
 
