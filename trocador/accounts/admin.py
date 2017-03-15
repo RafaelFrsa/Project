@@ -1,3 +1,10 @@
 from django.contrib import admin
+from trocador.accounts.models import User
+#from django.contrib.auth.forms import UserCreationForm
+#from django.contrib.auth.admin import UserAdmin
+
+
+
 
 # Register your models here.
+admin.site.register(User)
