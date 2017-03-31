@@ -2,7 +2,7 @@
 
 from django import forms
 from django.forms import ModelForm
-from trocador.duplotubo.models import Agua, Butano, CO2, Metano, Pentano, Choice, RC318
+from trocador.duplotubo.models import Agua, Butano, CO2, Metano, Pentano, RC318
 
 Opcoes = (
 	('', 'Manual'),
@@ -251,10 +251,6 @@ class Calculo(forms.Form):
 
 
 
-class ChoiceForm(ModelForm):
-    class Meta:
-        model = Choice
-        fields = ['Agua', 'Butano', 'CO2', 'Metano', 'Pentano', 'RC318']
 		
 
 

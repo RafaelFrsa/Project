@@ -64,14 +64,6 @@ class RC318(models.Model):
 	viscosity = models.FloatField('Viscosidade')
 	k = models.FloatField('k')
 
-class Choice(models.Model):
-
-	Agua = models.ForeignKey('Agua', blank=True, null=True)
-	Butano = models.ForeignKey('Butano', blank=True, null=True)
-	CO2 = models.ForeignKey('CO2', blank=True, null=True)
-	Metano = models.ForeignKey('Metano', blank=True, null=True)	
-	Pentano = models.ForeignKey('Pentano', blank=True, null=True)
-	RC318 = models.ForeignKey('RC318', blank=True, null=True)
 
 
 

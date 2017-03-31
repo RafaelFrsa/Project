@@ -2,7 +2,7 @@
 
 from django import forms
 from django.forms import ModelForm
-from trocador.cascoetubos.models import Agua, Butano, CO2, Metano, Pentano, Choice, RC318
+from trocador.cascoetubos.models import Agua, Butano, CO2, Metano, Pentano, RC318
 
 Opcoes = (
 	('', 'Manual'),
