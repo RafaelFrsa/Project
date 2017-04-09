@@ -64,8 +64,8 @@ h1, h2, h3, h4 {
 
 .footer {
     background: #000;
-    position: auto;
+    position: fixed;
     bottom: 0;
     width: 100%;
-
+    left: 0px;
 }

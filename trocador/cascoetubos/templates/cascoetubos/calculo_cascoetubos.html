@@ -46,7 +46,7 @@
                     <label for="{{ form.Diam_int1.id_for_label }}" class="label label-primary">{{ form.Diam_int1.label }}</label>
                     {{form.Diam_int1}}
                     <label for="{{ form.Viscos_tw1.id_for_label }}" class="label label-primary">{{ form.Viscos_tw1.label }}</label>
-                    {{form.Viscos_tw1}}                                                                    
+                    {{form.Viscos_tw1}}                                                              <br><br><br><br><br>      
                 </div>
             </div> 
         </div>
@@ -68,10 +68,10 @@
                     {{form.T_entr2}}
                     <label for="{{ form.T_said2.id_for_label }}" class="label label-primary">{{ form.T_said2.label }}</label>
                     {{form.T_said2}}
-                    <label for="{{ form.cp2.id_for_label }}" class="label label-primary">{{ form.cp2.label }}</label>
-                    {{form.cp2}} 
                     <label for="{{ form.k2.id_for_label }}" class="label label-primary">{{ form.k2.label }}</label>
                     {{form.k2}}
+                    <label for="{{ form.cp2.id_for_label }}" class="label label-primary">{{ form.cp2.label }}</label>
+                    {{form.cp2}} 
                     <label for="{{ form.Pr2.id_for_label }}" class="label label-primary">{{ form.Pr2.label }}</label>
                     {{form.Pr2}}  
                     <label for="{{ form.Viscosidade2.id_for_label }}" class="label label-primary">{{ form.Viscosidade2.label }}</label>
@@ -91,7 +91,8 @@
                     {{ form.Liquido2.label }}</label>
                     {{form.Liquido2}}
                     <label for="{{ form.Viscos_tw2.id_for_label }}" class="label label-primary">{{ form.Viscos_tw2.label }}</label>
-                    {{form.Viscos_tw2}}                                                                      
+                    {{form.Viscos_tw2}}
+                    <br><br><br><br><br>                                                                       
                 </div>
             </div> 
         </div>
@@ -133,24 +134,27 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12">
+           <div class="panel-group" id="accordion">
+            <div class="panel panel-primary"">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Resultados                      
+                  <span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">{{model}}</div>
+              </div>
+            </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" role="button">Calcular</button> 
+   <button type="submit" class="btn btn-primary" role="button">Calcular</button> 
+        </form>
+    </div>
 
-</form>
-          <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-                <h4>Dúvidas sobre a plataforma</h4>
-                <p>
-                    {{model}} 
-                </p>
+         
 
-                <h4>Mais Informações</h4>
-                <p>
-                <p>
-                   {{model}} 
-                </p>
-                </p>
-            </div>
-</div>
+
 
 {% endblock %}        
