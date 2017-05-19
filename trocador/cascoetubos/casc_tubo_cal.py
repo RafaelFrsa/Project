@@ -1,24 +1,9 @@
 # -*- coding: cp1252 -*-
-# Programa para Dimensionamento de Trocadores de Calor Casco e Tubos
-#####################!!!!! Adicionar caminho para Importar módulo com as Equações
-#####################!!!!! para cálculo de coeficientes de transferência e etc...
 import sys
-#sys.path.append(r'C:\Users\Lucas\Documents\Lucas Queiroz\Faculdade\Monografia\Material Monografia\Cálculos\Duplo Tubo\Essenciais')
-#sys.path.append(r'C:\Users\Lucas\Documents\Lucas Queiroz\Faculdade\Monografia\Material Monografia\Cálculos\Propriedades Físico-Químicas')
-####################!!!!! Lembrar disso depois...
+
 from math import *
 from dupl_tubo import *
-# Necessário definir termo para temperature_cross
-# Fluido1 é o fluido que escoa pelo lado do casco, shell
-# Fluido2 é o fluido que escoa pelos tubos.
-"""
-fluido1={'Vazao':0,'T_entr':0,'T_said':0,'cp':0,'k':0,'Pr':0,'Viscos':0,
-         'Densidade':0,'Diam_ext':0,'Diam_int':0,'Liquido':0,'Viscos_tw':0}
-fluido2={'Vazao':0,'T_entr':0,'T_said':0,'cp':0,'k':0,'Pr':0,'Viscos':0,
-         'Densidade':0,'Diam_ext':0,'Diam_int':0,'Annulus':0,'Liquido':0,'Viscos_tw':0}
-material={'K':0,'L':1, 'R_fi':0,'R_fo':0,'Calor_cnste':0,'Contracorrente':0,'Angulo_tubos':0,
-          'Bfl_spac':0,'Bfl_prct':0,'Num_pass_tb':0,'Pt':0, 'Num_passes_casco':1}
-"""
+
 def heat_friction_shell(fluido1,fluido2,material):
     calor_vazao(fluido1,fluido2)
     Ang=material['Angulo_tubos'];Ds=fluido1['Diam_int'];Do=fluido2['Diam_ext']

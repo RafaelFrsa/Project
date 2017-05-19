@@ -1,6 +1,5 @@
-# -*- coding: cp1252 -*-
-# Módulo de Equações para Trocadores de Calor Duplo-Tubo
-# Última Alteração 11:15 19/09/2016
+# -*- coding: utf-8 -*-
+
 
 from math import *
 
