@@ -31,27 +31,27 @@ class Calculo(forms.Form):
 	 	)
 	Vazao1 = forms.FloatField(label='Vazão', 
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Vazão em Kg/s"
+			attrs={"class":"form-control", "placeholder":"Vazão em kg/s"
 			}
 			)
 		) 
 	T_entr1 = forms.FloatField(label='Temperatura de Entrada',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de entrada em °C"
+			attrs={"class":"form-control", "placeholder":"Temperatura de entrada em °C"
 
 			}
 			)
 		) 
 	T_said1 = forms.FloatField(label='Temperatura de Saída',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de saída em °C"
+			attrs={"class":"form-control", "placeholder":"Temperatura de saída em °C"
 
 			}
 			)
 		) 
 	cp1 = forms.FloatField(label='Capacidade calorífica',required=False,
 		widget=forms.NumberInput(
-			attrs={"class":"form-control"
+			attrs={"class":"form-control", "placeholder":"Capacidade calorifica em J/(kg.K)"
 			}
 			)
  		)
@@ -76,7 +76,7 @@ class Calculo(forms.Form):
 		) 
 	Densidade1 = forms.FloatField(label='Densidade',required=False,
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Densidade em kg/m3"
+			attrs={"class":"form-control", "placeholder":"Densidade em kg/m³"
 			}
 			)
 		)
@@ -103,27 +103,27 @@ class Calculo(forms.Form):
 	# Fluido 2
 	Vazao2 = forms.FloatField(label='Vazao',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Vazão em Kg/s"
+			attrs={"class":"form-control", "placeholder":"Vazão em kg/s"
 			}
 			)
 		) 
 	T_entr2 = forms.FloatField(label='Temperatura de Entrada',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de entrada em °C"
+			attrs={"class":"form-control", "placeholder":"Temperatura de entrada em °C"
 
 			}
 			)
 		)
 	T_said2 = forms.FloatField(label='Temperatura de Saída',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de saída em °C"
+			attrs={"class":"form-control", "placeholder":"Temperatura de saída em °C"
 
 			}
 			)
 		) 
 	cp2 = forms.FloatField(label='Capacidade calorífica',required=False,
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de saída em °C"
+			attrs={"class":"form-control", "placeholder":"Capacidade calorifica em J/(kg.K)"
 			}
 			)
 		) 
@@ -148,7 +148,7 @@ class Calculo(forms.Form):
 	
 	Densidade2 = forms.FloatField(label='Densidade',required=False,
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder": "Densidade em kg/m3"
+			attrs={"class":"form-control", "placeholder": "Densidade em kg/m³"
 			}
 			)
 		) 
@@ -187,22 +187,22 @@ class Calculo(forms.Form):
 		) 
 	R_fi = forms.FloatField(label='Fator de Incrustação Interno',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Fator de incrustação interno em m2.K/W"
+			attrs={"class":"form-control", "placeholder":"Fator de incrustação interno em m².K/W"
 
 			}
 			)
 		) 
 	R_fo = forms.FloatField(label='Fator de Incrustação Externo',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Fator de incrustação externo em m2.K/W"
+			attrs={"class":"form-control", "placeholder":"Fator de incrustação externo em m².K/W"
 			}
 			)
 		) 
-	Calor_const = forms.BooleanField(label='Termicamente Isolado', required=False)
-	Contracorrente = forms.BooleanField(label='Escoamento Contracorrente', required=False)
-	Angulo_tubos = forms.FloatField(label='Angulo dos Tubos',
+	Calor_const = forms.BooleanField(label='Termicamente Isolado ?', required=False)
+	Contracorrente = forms.BooleanField(label='Escoamento Contracorrente ?', required=False)
+	Angulo_tubos = forms.FloatField(label='Ângulo dos Tubos',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Angulo dos Tubos"
+			attrs={"class":"form-control", "placeholder":"Ângulo dos Tubos"
 			}
 			)
 		)
@@ -212,9 +212,9 @@ class Calculo(forms.Form):
 			}
 			)
 		)
-	Bfl_prct = forms.FloatField(label='Porcentagem de Abertura das Chicanas',
+	Bfl_prct = forms.FloatField(label='Abertura das Chicanas',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":" Porcentagem de Abertura das Chicanas"
+			attrs={"class":"form-control", "placeholder":" Abertura das Chicanas em %"
 
 			}
 			)
@@ -225,9 +225,9 @@ class Calculo(forms.Form):
 			}
 			)
 		)
-	Pt = forms.FloatField(label='Pt',
+	Pt = forms.FloatField(label='Espaçamento entre os Tubos (Pitch)',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control"
+			attrs={"class":"form-control", "placeholder":"Espaçamento entre os centros dos tubos mm"
 			}
 			)
 		)
@@ -237,16 +237,16 @@ class Calculo(forms.Form):
 			}
 			)
 		)
-	Efic_bomb1 = forms.FloatField(label='Eficiencia da Bomba 1',
+	Efic_bomb1 = forms.FloatField(label='Eficiencia da Bomba Interna',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Eficiencia da Bomba 1"
+			attrs={"class":"form-control", "placeholder":"Eficiencia da Bomba Interna em % "
 
 			}
 			)
 		)
-	Efic_bomb2 = forms.FloatField(label='Eficiencia da Bomba 2',
+	Efic_bomb2 = forms.FloatField(label='Eficiencia da Bomba Externa',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Eficiencia da Bomba 2"
+			attrs={"class":"form-control", "placeholder":"Eficiencia da Bomba Externa em %"
 			}
 			)
 		)

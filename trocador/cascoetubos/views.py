@@ -73,8 +73,8 @@ def calculo_cascoetubos(request):
 			'Pr':dic1['Pr'] if bool(dic1['Pr']) else form.cleaned_data['Pr1'],
 			'Viscos':dic1['Viscos'] if bool(dic1['Viscos']) else form.cleaned_data['Viscosidade1'],
 			'Densidade':dic1['Densidade'] if bool(dic1['Densidade']) else form.cleaned_data['Densidade1'],
-			'Diam_ext':form.cleaned_data['Diam_ext1'],
-			'Diam_int':form.cleaned_data['Diam_int1'],
+			'Diam_ext':form.cleaned_data['Diam_ext1']/1000.0,
+			'Diam_int':form.cleaned_data['Diam_int1']/1000.0,
 			'Annulus':0,
 			'Liquido':1,
 			'Viscos_tw':dic1['Viscos_tw'] if bool(dic1['Viscos_tw']) else form.cleaned_data['Viscos_tw1']},
@@ -87,8 +87,8 @@ def calculo_cascoetubos(request):
 			'Pr':dic2['Pr'] if bool(dic2['Pr']) else form.cleaned_data['Pr2'],
 			'Viscos':dic2['Viscos'] if bool(dic2['Viscos']) else form.cleaned_data['Viscosidade2'],
 			'Densidade':dic1['Densidade'] if bool(dic1['Densidade']) else form.cleaned_data['Densidade2'],
-			'Diam_ext':form.cleaned_data['Diam_ext2'],
-			'Diam_int':form.cleaned_data['Diam_int2'],
+			'Diam_ext':form.cleaned_data['Diam_ext2']/1000.0,
+			'Diam_int':form.cleaned_data['Diam_int2']/1000.0,
 			'Annulus':1,
 			'Liquido':1,
 			'Viscos_tw':dic2['Viscos_tw'] if bool(dic2['Viscos_tw']) else form.cleaned_data['Viscos_tw2']},
@@ -100,13 +100,13 @@ def calculo_cascoetubos(request):
 			'Calor_cnste':form.cleaned_data['Calor_const'],
 			'Contracorrente':form.cleaned_data['Contracorrente'],
 			'Angulo_tubos':form.cleaned_data['Angulo_tubos'],
-			'Bfl_spac':form.cleaned_data['Bfl_spac'],
-			'Bfl_prct':form.cleaned_data['Bfl_prct'],
+			'Bfl_spac':form.cleaned_data['Bfl_spac']/1000.0,
+			'Bfl_prct':form.cleaned_data['Bfl_prct']/100.0,
 			'Num_pass_tb':form.cleaned_data['Num_pass_tb'],
 			'Pt':form.cleaned_data['Pt'],
 			'Num_passes_casco':form.cleaned_data['Num_passes_casco'],
-			'Efic_bomb1':form.cleaned_data['Efic_bomb1'],
-			'Efic_bomb2':form.cleaned_data['Efic_bomb2']})
+			'Efic_bomb1':form.cleaned_data['Efic_bomb1']/100.0,
+			'Efic_bomb2':form.cleaned_data['Efic_bomb2']/100.0})
 			
 
 		res = Resultado()
