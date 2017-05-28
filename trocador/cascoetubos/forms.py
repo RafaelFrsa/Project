@@ -214,7 +214,7 @@ class Calculo(forms.Form):
 		)
 	Bfl_prct = forms.FloatField(label='Abertura das Chicanas',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":" Abertura das Chicanas em %"
+			attrs={"class":"form-control", "placeholder":" % de Abertura das Chicanas "
 
 			}
 			)
@@ -239,14 +239,14 @@ class Calculo(forms.Form):
 		)
 	Efic_bomb1 = forms.FloatField(label='Eficiencia da Bomba Interna',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Eficiencia da Bomba Interna em % "
+			attrs={"class":"form-control", "placeholder":"% de Eficiencia da Bomba Interna"
 
 			}
 			)
 		)
 	Efic_bomb2 = forms.FloatField(label='Eficiencia da Bomba Externa',
 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Eficiencia da Bomba Externa em %"
+			attrs={"class":"form-control", "placeholder":"% de Eficiencia da Bomba Externa"
 			}
 			)
 		)

@@ -191,14 +191,14 @@ class Calculo(forms.Form):
 	 Contracorrente = forms.BooleanField(label='Escoamento Contracorrente ?', required=False)
 	 ef_b1 = forms.FloatField(label='Eficiência da Bomba Interna',
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder": "Eficiência da Bomba Interna em %"
+			attrs={"class":"form-control", "placeholder": " % de Eficiência da Bomba Interna "
 
 			}
 			)
 	 )   
 	 ef_b2 = forms.FloatField(label='Eficiência da Bomba Externa',
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder": "Eficiência da Bomba Externa em %"
+			attrs={"class":"form-control", "placeholder": " % de Eficiência da Bomba Externa "
 
 			}
 			)
