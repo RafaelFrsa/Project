@@ -5,7 +5,7 @@ from django.forms import ModelForm
 from trocador.cascoetubos.models import Agua, Butano, CO2, Metano, Pentano, RC318
 
 Opcoes = (
-	('', 'Manual'),
+	('manual', 'Manual'),
     ('duplotubo_agua', 'Água'),
     ('duplotubo_butano', 'Butano'),
     ('duplotubo_co2', 'CO2'), 

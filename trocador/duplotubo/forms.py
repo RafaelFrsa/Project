@@ -5,7 +5,7 @@ from django.forms import ModelForm
 from trocador.duplotubo.models import Agua, Butano, CO2, Metano, Pentano, RC318
 
 Opcoes = (
-	('', 'Manual'),
+	('manual', 'Manual'),
     ('duplotubo_agua', 'Água'),
     ('duplotubo_butano', 'Butano'),
     ('duplotubo_co2', 'CO2'), 
@@ -30,19 +30,19 @@ class Calculo(forms.Form):
 	 	)
 	 Vazao1 = forms.FloatField(label='Vazão',
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Vazão em Kg/s",'maxlength':'15'
+			attrs={"class":"form-control", "placeholder":"Vazão em kg/s",'maxlength':'15'
 			}
 			)
 	 ) 
 	 T_entr1 = forms.FloatField(label='Temperatura de Entrada',
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de entrada em °C",'maxlength':'15'
+			attrs={"class":"form-control", "placeholder":"Tempreratura em °C",'maxlength':'15'
 			}
 			)
 	 )  
 	 T_said1 = forms.FloatField(label='Temperatura de Saída',
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de saída em °C",'maxlength':'15'
+			attrs={"class":"form-control", "placeholder":"Tempreratura em °C",'maxlength':'15'
 			}
 			)
 	 )   
@@ -52,9 +52,9 @@ class Calculo(forms.Form):
 			}
 			)
 	 )   
-	 cp1 = forms.FloatField(label='Capacidade calorífica',required=False,
+	 cp1 = forms.FloatField(label='Calor Especifico',required=False,
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Capacidade calorifica em J/(kg.K)",'maxlength':'15'
+			attrs={"class":"form-control", "placeholder":"Calor Especifico em J/(kg.K)",'maxlength':'15'
 			}
 			)
 	 )   
@@ -103,13 +103,13 @@ class Calculo(forms.Form):
 	 )   
 	 T_entr2 = forms.FloatField(label='Temperatura de Entrada',
 	 	widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Tempreratura de entrada em °C"
+			attrs={"class":"form-control", "placeholder":"Temperatura em °C"
 			}
 			)
 	 )    
 	 T_said2 = forms.FloatField(label='Temperatura de Saída',
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Capacidade calorífica em °C"
+			attrs={"class":"form-control", "placeholder":"Temperatura em °C"
 			}
 			)
 	 )    
@@ -119,9 +119,9 @@ class Calculo(forms.Form):
 			}
 			)
 	 )    
-	 cp2 = forms.FloatField(label='Capacidade calorífica',required=False,
+	 cp2 = forms.FloatField(label='Calor Específico',required=False,
 	 		widget=forms.NumberInput(
-			attrs={"class":"form-control", "placeholder":"Capacidade calorífica em J/(kg.K)"
+			attrs={"class":"form-control", "placeholder":"Calor Específico em J/(kg.K)"
 			}
 			)
 	 )    

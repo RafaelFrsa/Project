@@ -63,27 +63,27 @@ def yut(fluido1,fluido2,material):
     fluido1['Potencia_bomb']=fluido1['Vazao']*fluido1[u'\u0394Ptotal']/(material['Efic_bomb1']*fluido1['Densidade'])
     fluido2['Potencia_bomb']=fluido2['Vazao']*fluido2[u'\u0394Ptotal']/(material['Efic_bomb2']*fluido2['Densidade'])
     CF=U_d/U_c;OS=100*U_c*(1-CF)/(U_c*CF)
-    result_fl={u'Vazão':(str(fluido1['Vazao'])+u' Kg/s',str(fluido2['Vazao'])+u' Kg/s'),
-                u'Temperatura de Entrada':(str(fluido1['T_entr'])+u' ºC',str(fluido2['T_entr'])+u' ºC'),
-                u'Temperatura de Saída':(str(fluido1['T_said'])+u' ºC',str(fluido2['T_said'])+u' ºC'),
-                u'Velocidade Média de Escoamento':(str(fluido1['Vel_m'])+u' m/s',str(fluido2['Vel_m'])+u' m/s'),
-                u'Número de Reynolds':(str(fluido1['Re'])+u' ',str(fluido2['Re'])+u' '),
-                u'Número de Nusselts':(str(fluido1['Nu'])+u' ',str(fluido2['Nu'])+u' '),
-                u'Coeficiente de Película (h)':(str(h_i)+u' W/m2.K',str(h_o)+u' W/m2.K')};
-    result_pres={u'\u2206P':(str(fluido1[u'\u0394P'])+u' Pa',str(fluido2[u'\u0394P'])+u' Pa'),
-                u'\u2206Prb':(str(material[u'\u0394Pr1'])+u' Pa',str(material[u'\u0394Pr2'])+u' Pa'),
-                u'\u2206Ptotal':(str(fluido1[u'\u0394Ptotal'])+u' Pa',str(fluido2[u'\u0394Ptotal'])+u' Pa'),
-                u'Potência de Bombeamento':(str(fluido1['Potencia_bomb'])+u' W',str(fluido2['Potencia_bomb'])+u' W'),
-                u'\u2206Pnl (bocais)':(str('---')+u' Pa',str(material[u'\u0394Pn'])+u' Pa')}
-    result_geral={u'Área de Troca Térmica Total':(str(area)+u' m2'),
-                u'Calor Trocado (Heat Duty)':(str(q)+u' J'),
-                u'Coef. de Trans. de Calor Limpo (Uc)':(str(U_c)+u' W/m2.K'),
-                u'Coef. de Trans. de Calor Incrustado (Ud)':(str(U_d)+u' W/m2.K'),
-                u'Fator de Limpeza (CF)':(str(CF)+u' '),
-                u'Var. Log. de Temperatura (\u2206Tm)':(str(dTm)+u' K'),
-                u'Área por Grampo Tubular':(str(area_grampo)+u' m2'),
-                u'Número de Grampos':(str(num_grampo)+u' grampo(s)'),
-                u'Excesso de Área (Over-Surface Design)':(str(OS)+u'%')}
+    result_fl={'Vazao':(str(fluido1['Vazao'])+' Kg/s',str(fluido2['Vazao'])+' Kg/s'),
+                'Temperatura de Entrada':(str(fluido1['T_entr']),str(fluido2['T_entr'])),
+                'Temperatura de Saida':(str(fluido1['T_said']),str(fluido2['T_said'])),
+                'Velocidade Media de Escoamento':(str(fluido1['Vel_m'])+' m/s',str(fluido2['Vel_m'])),
+                'Numero de Reynolds':(str(fluido1['Re']),str(fluido2['Re'])),
+                'Numero de Nusselts':(str(fluido1['Nu']),str(fluido2['Nu'])),
+                'Coeficiente de Pelicula (h)':(str(h_i),str(h_o))};
+    result_pres={'DP':(str(fluido1[u'\u0394P']/1000.0),str(fluido2[u'\u0394P']/1000.0)),
+                'DPrb':(str(material[u'\u0394Pr1']/1000.0),str(material[u'\u0394Pr2']/1000.0)),
+                'DPtotal':(str(fluido1[u'\u0394Ptotal']/1000.0),str(fluido2[u'\u0394Ptotal']/1000.0)),
+                'Potencia de Bombeamento':(str(fluido1['Potencia_bomb']/1000.0),str(fluido2['Potencia_bomb']/1000.0)),
+                'DPnl (bocais)':(str('---'),str(material[u'\u0394Pn']/1000.0))}
+    result_geral={'Area de Troca Termica Total':(str(area)),
+                'Calor Trocado (Heat Duty)':(str(q/1000.0)),
+                'Coef. de Trans. de Calor Limpo (Uc)':(str(U_c)),
+                'Coef. de Trans. de Calor Incrustado (Ud)':(str(U_d)),
+                'Fator de Limpeza (CF)':(str(CF)),
+                'Var. Log. de Temperatura (dTm)':(str(dTm)),
+                'Area por Grampo Tubular':(str(area_grampo)),
+                'Numero de Grampos':(str(num_grampo)+' grampo(s)'),
+                'Excesso de Area (Over-Surface Design)':(str(OS))}
     return result_fl,result_pres,result_geral
 
 

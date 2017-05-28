@@ -67,5 +67,7 @@ class RC318(models.Model):
 
 
 class Resultado(models.Model):
-	result_casc_tb = models.CharField('Resultado Casco e Tubos:', max_length=7000)	
+	result_fl = models.CharField('Resultado FluidoDinamico', max_length=7000)	
+	result_pres = models.CharField('Resultado Queda de Pressa', max_length=7000)
+	result_geral = models.CharField('Resultado de Analise Geral', max_length=7000)
 

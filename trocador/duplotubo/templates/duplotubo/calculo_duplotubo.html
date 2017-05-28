@@ -202,7 +202,139 @@
                 </h4>
               </div>
               <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">{{model}}</div>
+                <table class="table table-hover">
+                    <thead> Análise Termo-Fluidodinâmica
+                      <tr>
+                        <th></th>
+                        <th style="text-align: center">Tubo Interno</th>
+                        <th style="text-align: center">Região Anular</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Vazão</td>
+                        <td style="text-align: center">{{Vazao1}} kg/s</td>
+                        <td style="text-align: center">{{Vazao2}} kg/s</td>
+                      </tr>
+                      <tr>
+                        <td>Temperatura de Entrada</td>
+                        <td style="text-align: center">{{Tentr1}} ºC</td>
+                        <td style="text-align: center">{{Tentr2}} ºC</td>
+                      </tr>
+                      <tr>
+                        <td>Temperatura de Saída</td>
+                        <td style="text-align: center">{{Tsaid1}} ºC</td>
+                        <td style="text-align: center">{{Tsaid2}} ºC</td>
+                      </tr>
+                      <tr>
+                        <td>Variação Logarítmica de Temperatura</td>
+                        <td style="text-align: center">{{dTlmtd}} ºC</td>
+                        <td style="text-align: center">---</td>
+                      </tr>
+                     <tr>
+                        <td >Velocidade Média de Escoamento </td>
+                        <td style="text-align: center">{{Velocidade_Media_Escoamento1}} m/s</td>
+                        <td style="text-align: center">{{Velocidade_Media_Escoamento2}} m/s</td>
+                      </tr>
+                    <tr>
+                        <td>Número de Reynolds</td>
+                        <td style="text-align: center">{{Numero_Reynolds1}}</td>
+                        <td style="text-align: center">{{Numero_Reynolds2}}</td>
+                      </tr>
+                    <tr>
+                        <td>Número de Nusselts</td>
+                        <td style="text-align: center">{{Numero_Nusselts1}}</td>
+                        <td style="text-align: center">{{Numero_Nusselts2}}</td>
+                      </tr>
+                    <tr>
+                        <td>Coeficiente de Pelicula (h)</td>
+                        <td style="text-align: center">{{Coeficiente_Pelicula1}} W/m².K</td>
+                        <td style="text-align: center">{{Coeficiente_Pelicula2}} W/m².K</td>
+                      </tr>
+                                           
+                    </tbody>
+                  </table>
+
+                  <table class="table table-hover">
+                    <thead> Análise da Queda de Pressão
+                     <tr>
+                        <th></th>
+                        <th style="text-align: center">Tubo Interno</th>
+                        <th style="text-align: center">Região Anular</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>ΔP</td>
+                        <td style="text-align: center">{{DP1}} KPa</td>
+                        <td style="text-align: center">{{DP2}} KPa</td>
+                      </tr>
+                      <tr>
+                        <td>ΔP (Chicanas-Central)</td>
+                        <td style="text-align: center">{{DPrb1}} KPa</td>
+                        <td style="text-align: center">{{DPrb2}} KPa</td>
+                      </tr>
+                     <tr>
+                        <td >ΔP (Bocais) </td>
+                        <td style="text-align: center">{{DP_Bocais1}} KPa</td>
+                        <td style="text-align: center">{{DP_Bocais2}} KPa</td>
+                      </tr>
+                    <tr>
+                        <td>ΔP (Total)</td>
+                        <td style="text-align: center">{{DP_total1}} KPa</td>
+                        <td style="text-align: center">{{DP_total2}} KPa</td>
+                      </tr>
+                    <tr>
+                        <td>Potência de Bombeamento</td>
+                        <td style="text-align: center">{{Potencia_Bombeamento1}}</td>
+                        <td style="text-align: center">{{Potencia_Bombeamento2}}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                   <table class="table table-hover">
+                    <thead> Análise de Parâmetros Gerais 
+                      <tr>
+                        <th></th>
+                        <th>Definições</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Área de Troca Termica Total</td>
+                        <td style="text-align: center">{{Area_Troca_Termica_Total}} </td>
+                      </tr>
+                      <tr>
+                        <td>Área por Grampo Tubular</td>
+                        <td style="text-align: center">{{Area_Grampo_Tubular}} m²</td>
+                      </tr>
+                      <tr>
+                        <td>Calor Total Trocado (Heat Duty) </td>
+                        <td style="text-align: center">{{Calor_Trocado}} KJ</td>
+                      </tr>
+                      <tr>
+                        <td>Coeficiente de Transferência de Calor  Superfície Limpa (Uc) </td>
+                        <td style="text-align: center">{{Coef_Trans_Calor_Limpo}} W/m².K</td>
+                      </tr>
+                     <tr>
+                        <td >Coeficiente de Transferência de Calor Superfície Incrustada (Uf)</td>
+                        <td style="text-align: center">{{Coef_Trans_Calor_Incrustado}} W/m².K</td>
+                      </tr>
+                    <tr>
+                        <td>Fator de Limpeza</td>
+                        <td style="text-align: center">{{Fator_Limpeza}} </td>
+                      </tr>
+                    <tr>
+                        <td>Quantidade de Grampos</td>
+                        <td style="text-align: center">{{Numero_Grampos}} </td>
+                      </tr>
+                    <tr>
+                        <td >Excesso de Area (<em>Over-Surface Design</em>)</td>
+                        <td style="text-align: center">{{Excesso_Area}} %</td>
+                      </tr>
+                    </tbody>
+                  </table>
               </div>
             </div>
     </div>
