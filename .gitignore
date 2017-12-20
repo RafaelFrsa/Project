@@ -1,5 +1,6 @@
 *.pyc
 __pycache__
-.virtual
-db.sqlite3
+*.virtual
+*virtual
+*db.sqlite3
 .DS_Store
