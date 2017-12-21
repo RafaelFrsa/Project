@@ -8,43 +8,24 @@ from django.db import connection
 import sqlite3
 from django.contrib.auth.decorators import login_required
 
-
-
-def propried_get(temp_m,temp_w,table,fluido):
-	con = sqlite3.connect('db.sqlite3');
-	cur = con.cursor();
-	def inter_temp(temp,table,prop):
-		sql2='SELECT %s,temp FROM %s '\
-	          'WHERE temp >= %.5f LIMIT 1;'
-		sql1='SELECT %s,temp FROM %s '\
-	          'WHERE temp <= %.5f '\
-	          'ORDER BY temp DESC LIMIT 1;'
-		y1=float(cur.execute(sql1%(prop,table[0],temp,)).fetchall()[0][0])
-		y2=float(cur.execute(sql2%(prop,table[0],temp,)).fetchall()[0][0])
-		temp1=float(cur.execute(sql1%(prop,table[0],temp,)).fetchall()[0][1])
-		temp2=float(cur.execute(sql2%(prop,table[0],temp,)).fetchall()[0][1])
-		if y2>y1:
-			prop=(y2-y1)*(temp-temp1)/(temp2-temp1) + y1
-		else:
-			prop=-(y1-y2)*(temp-temp1)/(temp2-temp1) + y1
-		return prop
-
-	sql_stmnt='SELECT %s FROM %s WHERE temp == %s;'
-	if temp_m in cur.execute('SELECT * FROM %s;'%table).fetchall():
-	    fluido['Densidade']=float(cur.execute(sql_stmnt%('densidade',table,temp_m)).fetchone()[0])
-	    fluido['Viscos']=float(cur.execute(sql_stmnt%('Viscos',table,temp_m)).fetchone()[0])
-	    fluido['cp']=float(cur.execute(sql_stmnt%('cp',table,temp_m)).fetchone()[0])
-	    fluido['Viscos_tw']=float(cur.execute(sql_stmnt%('Viscos',table,temp_m)).fetchone()[0])
-	    fluido['k']=float(cur.execute(sql_stmnt%('k',table,temp_w)).fetchone()[0])
-	    fluido['Pr']=fluido['cp']*fluido['Viscos']/fluido['k']
-	else:
-	    fluido['Densidade']=inter_temp(temp_m,table,'densidade')
-	    fluido['Viscos']=inter_temp(temp_m,table,'Viscos')
-	    fluido['cp']=inter_temp(temp_m,table,'cp')
-	    fluido['Viscos_tw']=inter_temp(temp_w,table,'Viscos')
-	    fluido['k']=inter_temp(temp_m,table,'k')
-	    fluido['Pr']=fluido['cp']*fluido['Viscos']/fluido['k']
-	return fluido
+def propried_get(Table,temp,temp_w,fluido):
+    def trecho(Table,temp):
+        query1=Table.objects.filter(temperature__gte=temp)[0] 
+        query2=Table.objects.filter(temperature__lte=temp)[len(Table.objects.filter(temperature__lte=temp))-1] 
+        temp1=query1.temperature;temp2=query2.temperature
+        return query1,query2,temp1,temp2
+    for propriedade in fluido.keys():
+        try:
+            if propriedade=='Viscos_tw':
+                query1,query2,temp1,temp2=trecho(Agua,temp_w)
+                prop1=eval('query1.Viscos');prop2=eval('query2.Viscos')
+            else:
+                query1,query2,temp1,temp2=trecho(Agua,temp)
+                prop1=eval('query1.%s'%propriedade);prop2=eval('query2.%s'%propriedade)
+            fluido[propriedade]=(prop2-prop1)*(temp-temp1)/(temp2-temp1) + prop1 if prop2>prop1 else -(prop1-prop2)*(temp-temp1)/(temp2-temp1) + prop1
+        except: pass
+    fluido['Pr']=fluido['cp']*fluido['Viscos']/fluido['k']
+    return fluidos
 
 @login_required
 def calculo_duplotubo(request):
@@ -91,8 +72,8 @@ def calculo_duplotubo(request):
 			temp_m1=(form.cleaned_data['T_entr1']+form.cleaned_data['T_said1'])/2
 			temp_m2=(form.cleaned_data['T_entr2']+form.cleaned_data['T_said2'])/2
 			temp_w=(form.cleaned_data['T_entr1']+form.cleaned_data['T_said1']+form.cleaned_data['T_entr2']+form.cleaned_data['T_said2'])/4
-			propried_get(temp_m1,temp_w,tuple([form.cleaned_data['nome_fluido1']]),dic1)
-			propried_get(temp_m2,temp_w,tuple([form.cleaned_data['nome_fluido2']]),dic2)
+			propried_get(tuple([form.cleaned_data['nome_fluido1']]),temp_m1,temp_w,dic1)
+			propried_get(tuple([form.cleaned_data['nome_fluido2']]),temp_m2,temp_w,dic2)
 
 	context={'form': form}
 	if form.is_valid():
@@ -197,7 +178,6 @@ def calculo_duplotubo(request):
 
 
 		else:
-
 			fluido1, fluido2, material = yut(
 				# Fluido1
 				{'Vazao':form.cleaned_data['Vazao1'],
@@ -250,10 +230,10 @@ def calculo_duplotubo(request):
 				'Num_ramos':form.cleaned_data['Num_ramos']})
 
 			res = Resultado()
-       		res.result_fl = fluido1
-       		res.result_pres = fluido2
-       		res.result_geral = material
-       		res.save()
+			res.result_fl = fluido1
+			res.result_pres = fluido2
+			res.result_geral = material
+			res.save()
 
 		context = {'form': form,
 					'Vazao1':fluido1['Vazao'][0],
