@@ -8,7 +8,7 @@ $("#id_nome_fluido1").on("change", function (){
 		$("#id_cp1").prop('disabled', true);
 		$("#id_Pr1").prop('disabled', true);
 		$("#id_Densidade1").prop('disabled', true);
-		$("#id_Viscosidade1").prop('disabled', true);
+		$("#id_Viscos1").prop('disabled', true);
 		$("#id_Viscos_tw1").prop('disabled', true);
 	} 
 	else if ($("#id_nome_fluido1").val() == "duplotubo_butano") {
@@ -18,7 +18,7 @@ $("#id_nome_fluido1").on("change", function (){
 		$("#id_cp1").prop('disabled', true);
 		$("#id_Pr1").prop('disabled', true);
 		$("#id_Densidade1").prop('disabled', true);
-		$("#id_Viscosidade1").prop('disabled', true);
+		$("#id_Viscos1").prop('disabled', true);
 		$("#id_Viscos_tw1").prop('disabled', true);
 	}
 	else if ($("#id_nome_fluido1").val() == "duplotubo_co2") {
@@ -28,7 +28,7 @@ $("#id_nome_fluido1").on("change", function (){
 		$("#id_cp1").prop('disabled', true);
 		$("#id_Pr1").prop('disabled', true);
 		$("#id_Densidade1").prop('disabled', true);
-		$("#id_Viscosidade1").prop('disabled', true);
+		$("#id_Viscos1").prop('disabled', true);
 		$("#id_Viscos_tw1").prop('disabled', true);
 	}
 	else if ($("#id_nome_fluido1").val() == "duplotubo_metano") {
@@ -38,7 +38,7 @@ $("#id_nome_fluido1").on("change", function (){
 		$("#id_cp1").prop('disabled', true);
 		$("#id_Pr1").prop('disabled', true);
 		$("#id_Densidade1").prop('disabled', true);
-		$("#id_Viscosidade1").prop('disabled', true);
+		$("#id_Viscos1").prop('disabled', true);
 		$("#id_Viscos_tw1").prop('disabled', true);
 	}
 	else if ($("#id_nome_fluido1").val() == "duplotubo_pentano") {
@@ -48,7 +48,7 @@ $("#id_nome_fluido1").on("change", function (){
 		$("#id_cp1").prop('disabled', true);
 		$("#id_Pr1").prop('disabled', true);
 		$("#id_Densidade1").prop('disabled', true);
-		$("#id_Viscosidade1").prop('disabled', true);
+		$("#id_Viscos1").prop('disabled', true);
 		$("#id_Viscos_tw1").prop('disabled', true);
 	}
 	else if ($("#id_nome_fluido1").val() == "duplotubo_rc318") {
@@ -58,7 +58,7 @@ $("#id_nome_fluido1").on("change", function (){
 		$("#id_cp1").prop('disabled', true);
 		$("#id_Pr1").prop('disabled', true);
 		$("#id_Densidade1").prop('disabled', true);
-		$("#id_Viscosidade1").prop('disabled', true);
+		$("#id_Viscos1").prop('disabled', true);
 		$("#id_Viscos_tw1").prop('disabled', true);
 	}
 	else {
@@ -66,7 +66,7 @@ $("#id_nome_fluido1").on("change", function (){
 		$("#id_cp1").prop('disabled', false);
 		$("#id_Pr1").prop('disabled', false);
 		$("#id_Densidade1").prop('disabled', false);
-		$("#id_Viscosidade1").prop('disabled', false);
+		$("#id_Viscos1").prop('disabled', false);
 		$("#id_Viscos_tw1").prop('disabled', false);
 
 	};
@@ -81,7 +81,7 @@ $("#id_nome_fluido2").on("change", function (){
 		$("#id_cp2").prop('disabled', true);
 		$("#id_Pr2").prop('disabled', true);
 		$("#id_Densidade2").prop('disabled', true);
-		$("#id_Viscosidade2").prop('disabled', true);
+		$("#id_Viscos2").prop('disabled', true);
 		$("#id_Viscos_tw2").prop('disabled', true);
 	} 
 
@@ -92,7 +92,7 @@ $("#id_nome_fluido2").on("change", function (){
 		$("#id_cp2").prop('disabled', true);
 		$("#id_Pr2").prop('disabled', true);
 		$("#id_Densidade2").prop('disabled', true);
-		$("#id_Viscosidade2").prop('disabled', true);
+		$("#id_Viscos2").prop('disabled', true);
 		$("#id_Viscos_tw2").prop('disabled', true);
 	}
 
@@ -103,7 +103,7 @@ $("#id_nome_fluido2").on("change", function (){
 		$("#id_cp2").prop('disabled', true);
 		$("#id_Pr2").prop('disabled', true);
 		$("#id_Densidade1").prop('disabled', true);
-		$("#id_Viscosidade2").prop('disabled', true);
+		$("#id_Viscos2").prop('disabled', true);
 		$("#id_Viscos_tw2").prop('disabled', true);
 	}
 	else if ($("#id_nome_fluido2").val() == "duplotubo_metano") {
@@ -113,7 +113,7 @@ $("#id_nome_fluido2").on("change", function (){
 		$("#id_cp2").prop('disabled', true);
 		$("#id_Pr2").prop('disabled', true);
 		$("#id_Densidade2").prop('disabled', true);
-		$("#id_Viscosidade2").prop('disabled', true);
+		$("#id_Viscos2").prop('disabled', true);
 		$("#id_Viscos_tw2").prop('disabled', true);
 	}
 	else if ($("#id_nome_fluido2").val() == "duplotubo_pentano") {
@@ -123,7 +123,7 @@ $("#id_nome_fluido2").on("change", function (){
 		$("#id_cp2").prop('disabled', true);
 		$("#id_Pr2").prop('disabled', true);
 		$("#id_Densidade2").prop('disabled', true);
-		$("#id_Viscosidade2").prop('disabled', true);
+		$("#id_Viscos2").prop('disabled', true);
 		$("#id_Viscos_tw2").prop('disabled', true);
 	}
 	else if ($("#id_nome_fluido2").val() == "duplotubo_rc318") {
@@ -133,7 +133,7 @@ $("#id_nome_fluido2").on("change", function (){
 		$("#id_cp2").prop('disabled', true);
 		$("#id_Pr2").prop('disabled', true);
 		$("#id_Densidade2").prop('disabled', true);
-		$("#id_Viscosidade2").prop('disabled', true);
+		$("#id_Viscos2").prop('disabled', true);
 		$("#id_Viscos_tw2").prop('disabled', true);
 	}
 
@@ -142,7 +142,7 @@ $("#id_nome_fluido2").on("change", function (){
 		$("#id_cp2").prop('disabled', false);
 		$("#id_Pr2").prop('disabled', false);
 		$("#id_Densidade2").prop('disabled', false);
-		$("#id_Viscosidade2").prop('disabled', false);
+		$("#id_Viscos2").prop('disabled', false);
 		$("#id_Viscos_tw2").prop('disabled', false);
 
 	};

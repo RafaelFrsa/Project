@@ -4,13 +4,16 @@ from django import forms
 #from django.forms import ModelForm
 from trocador.core.models import Agua, Butano, CO2, Metano, Pentano, RC318
 
-Opcoes = (('manual', 'Manual'),
-    ('duplotubo_agua', 'Água'),
-    ('duplotubo_butano', 'Butano'),
-    ('duplotubo_co2', 'CO2'), 
-    ('duplotubo_metano', 'Metano'),
-    ('duplotubo_pentano', 'Pentano'),   
-    ('duplotubo_rc318', 'RC318'),)
+Opcoes = (
+    ('manual', 'Manual'),
+    ('core_agua', 'Água'),
+    ('core_butano', 'Butano'),
+    ('core_co2', 'CO2'), 
+    ('core_metano', 'Metano'),
+    ('core_pentano', 'Pentano'),   
+    ('core_rc318', 'RC318'),     
+    
+)
 
 Tipos_de_aletas=(('retangular','Retangular'),
                 ('circular','Anular'),

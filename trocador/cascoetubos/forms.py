@@ -6,12 +6,12 @@ from trocador.cascoetubos.models import Agua, Butano, CO2, Metano, Pentano, RC31
 
 Opcoes = (
 	('manual', 'Manual'),
-    ('duplotubo_agua', 'Água'),
-    ('duplotubo_butano', 'Butano'),
-    ('duplotubo_co2', 'CO2'), 
-    ('duplotubo_metano', 'Metano'),
-    ('duplotubo_pentano', 'Pentano'),   
-    ('duplotubo_rc318', 'RC318'),     
+    ('core_agua', 'Água'),
+    ('core_butano', 'Butano'),
+    ('core_co2', 'CO2'), 
+    ('core_metano', 'Metano'),
+    ('core_pentano', 'Pentano'),   
+    ('core_rc318', 'RC318'),     
     
 )
 
