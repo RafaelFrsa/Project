@@ -6,12 +6,12 @@ from trocador.core.models import Agua, Butano, CO2, Metano, Pentano, RC318
 
 Opcoes = (
     ('manual', 'Manual'),
-    ('core_agua', 'Água'),
-    ('core_butano', 'Butano'),
-    ('core_co2', 'CO2'), 
-    ('core_metano', 'Metano'),
-    ('core_pentano', 'Pentano'),   
-    ('core_rc318', 'RC318'),     
+    ('Agua', 'Água'),
+    ('Butano', 'Butano'),
+    ('CO2', 'CO2'), 
+    ('Metano', 'Metano'),
+    ('Pentano', 'Pentano'),   
+    ('RC318', 'RC318'),     
     
 )
 
