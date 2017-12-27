@@ -24,7 +24,7 @@ def propried_get(Table,temp,temp_w,fluido):
             fluido[propriedade]=(prop2-prop1)*(temp-temp1)/(temp2-temp1) + prop1 if prop2>prop1 else -(prop1-prop2)*(temp-temp1)/(temp2-temp1) + prop1
         except: pass
     fluido['Pr']=fluido['cp']*fluido['Viscos']/fluido['k']
-    return fluidos
+    return fluido
 
 def atribut(formulario,dicionario,identificador=''):
     for dado in formulario.cleaned_data.keys():
