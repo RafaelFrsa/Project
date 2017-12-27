@@ -28,12 +28,13 @@ def propried_get(Table,temp,temp_w,fluido):
 
 def atribut(formulario,dicionario,identificador=''):
     for dado in formulario.cleaned_data.keys():
-        if dado.replace(identificador,'') in dicionario.keys():
-            dicionario[dado.replace(identificador,'')]=formulario.cleaned_data[dado]
+        chave=dado.replace(identificador,'')
+        if chave in dicionario.keys() and bool(formulario.cleaned_data[dado]):
+            dicionario[chave]=formulario.cleaned_data[dado]
     if 'Annulus' in dicionario.keys():
         dicionario['Diam_int']=dicionario['Diam_int']/1000.0
         dicionario['Diam_ext']=dicionario['Diam_ext']/1000.0
-    return    dicionario
+    return  dicionario
 
 @login_required
 def calculo_duplotubo(request):
@@ -49,44 +50,26 @@ def calculo_duplotubo(request):
     exibition = Resultado()
     template_name = 'duplotubo/calculo_duplotubo.html'
     form = Calculo(request.POST or None)
+    context={'form': form}
     if form.is_valid():
+        d=form.cleaned_data
         temp_m1=(form.cleaned_data['T_entr1']+form.cleaned_data['T_said1'])/2
         temp_m2=(form.cleaned_data['T_entr2']+form.cleaned_data['T_said2'])/2
         temp_w=(form.cleaned_data['T_entr1']+form.cleaned_data['T_said1']+form.cleaned_data['T_entr2']+form.cleaned_data['T_said2'])/4
-        if form.cleaned_data['nome_fluido1']=='manual': 
-            fluidoInterno=atribut(form,fluidoInterno,identificador="1")
-
-        if form.cleaned_data['nome_fluido2']=='manual': 
-            fluidoExterno=atribut(form,fluidoExterno,identificador='2')
-
-        elif form.cleaned_data['nome_fluido2']!='manual' or form.cleaned_data['nome_fluido1']!='manual':
+        atribut(form,fluidoInterno,identificador="1")
+        atribut(form,fluidoExterno,identificador='2')
+        atribut(form,material)
+        if form.cleaned_data['nome_fluido1']!='manual':
             propried_get(eval(form.cleaned_data['nome_fluido1']),temp_m1,temp_w,fluidoInterno)
+        if form.cleaned_data['nome_fluido2']!='manual':
             propried_get(eval(form.cleaned_data['nome_fluido2']),temp_m2,temp_w,fluidoExterno)
 
-    context={'form': form}
-    if form.is_valid():
-        if form.cleaned_data['nome_fluido1']=='manual' and form.cleaned_data['nome_fluido2']!='manual':
-            fluido1, fluido2, material = yut(fluidoInterno,
-                propried_get(eval(form.cleaned_data['nome_fluido2']),temp_m2,temp_w,fluidoExterno),
-                atribut(form,material))
-
-        if form.cleaned_data['nome_fluido2']=='manual' and form.cleaned_data['nome_fluido1']!='manual':
-            fluido1, fluido2, material = yut(
-                propried_get(eval(form.cleaned_data['nome_fluido1']),temp_m1,temp_w,fluidoInterno),
+        # if form.cleaned_data['nome_fluido1']=='manual' and form.cleaned_data['nome_fluido2']!='manual':
+        fluido1, fluido2, material = yut(fluidoInterno,
                 fluidoExterno,
-                atribut(form,material))
+                material)
 
-        elif form.cleaned_data['nome_fluido1']=='manual' and form.cleaned_data['nome_fluido2']=='manual':
-            fluido1, fluido2, material = yut(fluidoInterno,fluidoExterno,atribut(form,material))
-        else:
-
-            fluido1, fluido2, material = yut(
-                # Fluido1
-                propried_get(eval(form.cleaned_data['nome_fluido1']),temp_m1,temp_w,fluidoInterno),
-                # Fluido2
-                propried_get(eval(form.cleaned_data['nome_fluido2']),temp_m2,temp_w,fluidoExterno),
-                # Material
-                atribut(form,material))
+  
 
         res = Resultado()
         res.result_fl = fluido1
