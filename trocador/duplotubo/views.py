@@ -52,7 +52,6 @@ def calculo_duplotubo(request):
     form = Calculo(request.POST or None)
     context={'form': form}
     if form.is_valid():
-        d=form.cleaned_data
         temp_m1=(form.cleaned_data['T_entr1']+form.cleaned_data['T_said1'])/2
         temp_m2=(form.cleaned_data['T_entr2']+form.cleaned_data['T_said2'])/2
         temp_w=(form.cleaned_data['T_entr1']+form.cleaned_data['T_said1']+form.cleaned_data['T_entr2']+form.cleaned_data['T_said2'])/4
