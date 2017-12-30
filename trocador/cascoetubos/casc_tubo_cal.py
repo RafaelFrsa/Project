@@ -1,19 +1,40 @@
 # -*- coding: cp1252 -*-
+# Programa para Dimensionamento de Trocadores de Calor Casco e Tubos
+#####################!!!!! Adicionar caminho para Importar módulo com as Equações
+#####################!!!!! para cálculo de coeficientes de transferência e etc...
 import sys
-
+#sys.path.append(r'C:\Users\Lucas\Documents\Lucas Queiroz\Faculdade\Monografia\Material Monografia\Cálculos\Duplo Tubo\Essenciais')
+#sys.path.append(r'C:\Users\Lucas\Documents\Lucas Queiroz\Faculdade\Monografia\Material Monografia\Cálculos\Propriedades Físico-Químicas')
+####################!!!!! Lembrar disso depois...
 from math import *
 from dupl_tubo import *
-
+# Necessário definir termo para temperature_cross
+# Fluido1 é o fluido que escoa pelo lado do casco, shell
+# Fluido2 é o fluido que escoa pelos tubos.
+"""
+fluido1={'Vazao':0,'T_entr':0,'T_said':0,'cp':0,'k':0,'Pr':0,'Viscos':0,
+         'Densidade':0,'Diam_ext':0,'Diam_int':0,'Liquido':0,'Viscos_tw':0}
+fluido2={'Vazao':0,'T_entr':0,'T_said':0,'cp':0,'k':0,'Pr':0,'Viscos':0,
+         'Densidade':0,'Diam_ext':0,'Diam_int':0,'Annulus':0,'Liquido':0,'Viscos_tw':0}
+material={'K':0,'L':1, 'R_fi':0,'R_fo':0,'Calor_cnste':0,'Contracorrente':0,'Angulo_tubos':0,
+          'Bfl_spac':0,'Bfl_prct':0,'Num_pass_tb':0,'Pt':0, 'Num_passes_casco':1}
+"""
 def heat_friction_shell(fluido1,fluido2,material):
     calor_vazao(fluido1,fluido2)
     Ang=material['Angulo_tubos'];Ds=fluido1['Diam_int'];Do=fluido2['Diam_ext']
     d_i=fluido2['Diam_int']
     fluido1['Area_s']=Ds*material['Bfl_spac']*(material['Pt']-Do)/material['Pt']
-    fluido1['Re']=fluido2['Diam_ext']*fluido1['Vazao']/fluido1['Viscos']/fluido1['Area_s']
-    Res=fluido1['Re'];
+    #Parte ALTERADA
+    if material['Angulo_tubos']==30:
+        Diam_eq=(4*((material['Pt']**2)*(3**0.5))/4-pi*(fluido2['Diam_ext']**2)/8)/(pi*fluido2['Diam_ext']/2)
+    else:
+        Diam_eq=(4*(material['Pt']**2)-pi*(fluido2['Diam_ext']**2)/4)/(pi*fluido2['Diam_ext'])
     Gs=fluido1['Vazao']/fluido1['Area_s']
+    fluido1['Re']=Gs*Diam_eq/fluido1['Viscos']#fluido2['Diam_ext']*fluido1['Vazao']/fluido1['Viscos']/fluido1['Area_s']
+    ##Fim da parte ALTERADA
+    Res=fluido1['Re'];
     fluido1['G']=Gs
-    material['Diam_feixe_tubos']= (Ds - 9.525*10**-3) if Ds<0.3 else (Ds-12.7*10**-3) if (Ds>=300 and Ds<=100) else (Ds-15.875*10**-3)
+    material['Diam_feixe_tubos']= (Ds - 9.525*10**-3) if Ds<0.3 else (Ds-12.7*10**-3) if (Ds>=0.3 and Ds<=0.1) else (Ds-15.875*10**-3)
     Dctl= material['Diam_feixe_tubos'] - Do
     Bc=material['Bfl_prct'];#Fractional Baffle cut, porcentagem da chicana que está cortada
     teta_ds=2*acos(1-2*Bc);
@@ -126,23 +147,23 @@ def heat_friction_shell(fluido1,fluido2,material):
     b=b3/(1+0.14*pow(Res,b4))
     f_i=b1*pow(1.33/(material['Pt']/Do),b)*pow(Res,b2)
     fluido1['f_i']=f_i
-    fluido1['Nc,nb,ncw']=Nc,nb,Ncw;fluido1[u'\u0394Pw_ideal']=APw_ideal
+    fluido1['Nc,nb,ncw']=Nc,nb,Ncw;fluido1['dPw_ideal']=APw_ideal
     AP_ideal=(2*f_i*Nc*pow(Gs,2)/(fluido1['Densidade']*pow(fluido1['Viscos']/fluido1['Viscos_tw'],0.14)))
     APf=((nb-1)*AP_ideal*Rb+nb*APw_ideal)*Rl+2*AP_ideal*(1+Ncw/Nc)*Rb*Rs
-    fluido1[u'\u0394P do Casco']=APf
-    fluido1[u'\u0394P_Central_Chicanas']=(nb-1)*Rl*Rb*AP_ideal #Serth 6.9 pg 212
-    fluido1[u'\u0394P_Janela_Chicanas']=nb*APw_ideal*Rl #Serth 6.14 pg 213
-    fluido1[u'\u0394P_Entrada_Saida']=2*AP_ideal*(1+Ncw/Nc)*Rb*Rs #Serth 6.15 pg 213
+    fluido1['dP do Casco']=APf
+    fluido1['dP_Central_Chicanas']=(nb-1)*Rl*Rb*AP_ideal #Serth 6.9 pg 212
+    fluido1['dP_Janela_Chicanas']=nb*APw_ideal*Rl #Serth 6.14 pg 213
+    fluido1['dP_Entrada_Saida']=2*AP_ideal*(1+Ncw/Nc)*Rb*Rs #Serth 6.15 pg 213
     s1=fluido1['Densidade']/1000.0;s2=fluido1['Densidade']/1000.0
     APn1=(7.5*10**-4)*(Ns*(fluido1['G']**2))/s1 if Res>2000 else ((1.5*10**-3)*(Ns*(fluido1['G']**2))/s1)
-    APn2=(7.5*10**-4)*(Ns*(fluido2['G']**2))/s2 if Res>2000 else ((1.5*10**-3)*(Ns*(fluido2['G']**2))/s2)
-    fluido1[u'\u0394Ptotal']=APf+APn1
+    APn2=APn1=(7.5*10**-4)*(Ns*(fluido2['G']**2))/s2 if Res>2000 else ((1.5*10**-3)*(Ns*(fluido2['G']**2))/s2)
+    fluido1['dPtotal']=APf+APn1
     ###Para o segundo a partir de agora ######!!!!
     fluido2['f']=f
     APf2=(4*f*material['L']*np/fluido2['Diam_int']+4*np)*(fluido2['Densidade']*fluido2['Vel_mf']/2)
-    fluido2[u'\u0394Ptotal']=APf2+APn2
-    fluido1['Potencia_bomb']=fluido1['Vazao']*fluido1[u'\u0394Ptotal']/(material['Efic_bomb1']*fluido1['Densidade'])
-    fluido2['Potencia_bomb']=fluido2['Vazao']*fluido2[u'\u0394Ptotal']/(material['Efic_bomb2']*fluido2['Densidade'])
+    fluido2['dPtotal']=APf2+APn2
+    fluido1['Potencia_bomb']=fluido1['Vazao']*fluido1['dPtotal']/(material['Efic_bomb1']*fluido1['Densidade'])
+    fluido2['Potencia_bomb']=fluido2['Vazao']*fluido2['dPtotal']/(material['Efic_bomb2']*fluido2['Densidade'])
     F=correction_factor(fluido1,fluido2,material)
     dTm=check_dtm(fluido1,fluido2,material)
     U_o=(Do/(d_i*fluido2['Coeficient_calor'])+(Do*log(Do/d_i)/(2*material['K']))+1/h_o)**-1
@@ -153,23 +174,58 @@ def heat_friction_shell(fluido1,fluido2,material):
     area_f=Q/(U_f*F*dTm)
     fluido1['Vel_mf']=fluido1['G']/fluido1['Densidade']
     material['Num_tubos']=area_f/(material['L']*pi*Do)
-    fluido1['dPN']=APn1
-    fluido2['dPN']=APn2
-    material['area_c']=area_c
-    material['area_f']=area_f
-    material['Q']=Q
-    material['Uc']=U_o
-    material['Ud']=U_f
-    material['dTm']=dTm
-    material['S_m']=S_m
-    material['S_b']=S_b
-    material['S_sb']=S_sb
-    material['S_tb']=S_tb
-    material['OS']=OS
+    result_fl={u'Vazão':(str(fluido1['Vazao']),str(fluido2['Vazao'])),
+                u'Temperatura de Entrada':(str(fluido1['T_entr']),str(fluido2['T_entr'])),
+                u'Temperatura de Saida':(str(fluido1['T_said']),str(fluido2['T_said'])),
+                u'Velocidade Media de Escoamento':(str(fluido1['Vel_mf']),str(fluido2['Vel_mf'])),
+                u'Numero de Reynolds':(str(fluido1['Re']),str(fluido2['Re'])),
+                u'Numero de Nusselts':(str(fluido1['Nu']),str(fluido2['Nu'])),
+                u'Coeficiente de Pelicula (h)':(str(fluido1['Coeficient_calor']),str(fluido2['Coeficient_calor']))};
+    result_pres={'DtP':(str(fluido1['dP do Casco']),str(fluido2['dPtotal'])),
+                'DtP Central Chicanas':(str(fluido1['dP_Central_Chicanas']),str('---')),
+                'DtP Janela Chicanas':(str(fluido1['dP_Janela_Chicanas']),str('---')),
+                'DtP Entrada e Saida':(str(fluido1['dP_Entrada_Saida']),str('---')),
+                'DtP total':(str(fluido1['dPtotal']),str(fluido2['dPtotal'])),
+                u'Potencia de Bombeamento':(str(fluido1['Potencia_bomb']),str(fluido2['Potencia_bomb'])),
+                'DtP pelos Bocais':(str(APn1),str(APn2))}
+    result_geral={u'Area de superficie Limpa':(str(area_c)),
+                u'Area de superficie Incrustada':(str(area_f)),
+                u'Calor Trocado (Heat Duty)':(str(Q/1000)),
+                u'Coef. de Trans. de Calor Limpo (Uc)':(str(U_o)),
+                u'Coef. de Trans. de Calor Incrustado (Ud)':(str(U_f)),
+                u'Numero de Chicanas':(str(material['Num_bfl'])),
+                u'Numero de Tubos ':(str(int(material['Num_tubos'])+1)+u' tubos'),
+                'DtTlmtd':(str(dTm)+u' K'),
+                u'Area de Escoamento Cruzado':(str(S_m)),
+                u'Bypass Area de Escoamento':(str(S_b)),
+                u'Area de Vazamento Casco-Chicanas':(str(S_sb)),
+                u'Area de Vazamento Tubos-Chicanas':(str(S_tb)),
+                u'Fator de Corr. Geral Coef. Calor':(str(fluido1['Fator_Correcao_Geral_Calor'])),
+                u'Excesso de Area (Over-Surface Design)':(str(OS*100)+u'%'),
+                u'Numero de Tubos Preeliminar':str(material['Num_tubos_Preliminar'])}
+    return result_fl,result_pres,result_geral
 
-    return fluido1, fluido2, material
 
 
+
+#Exemplo 8.3 Kakaç e Liu
+'''
+fluido1={'Vazao':50,'T_entr':32.0,'T_said':25.0,'cp':4179.0,'k':0.612,'Pr':5.75,'Viscos':8.15*10**-4,'Densidade':995.9,'Diam_ext':0.70,'Diam_int':0.58,'Liquido':1,'Viscos_tw':8.15*10**-4};fluido2={'Vazao':150,'T_entr':20,'T_said':27,'cp':4182,'k':0.598,'Pr':7.01,'Viscos':10.02*10**-4,'Densidade':998.2,'Diam_ext':19*10**-3,'Diam_int':16*10**-3,'Annulus':0,'Liquido':1,'Viscos_tw':10.02*10**-4};material={'K':42.3,'L':4.54, 'R_fi':0.000176,'R_fo':0.000176,'Calor_cnste':1,'Contracorrente':1,'Angulo_tubos':90,'Bfl_spac':0.5,'Bfl_prct':0.25,'Num_pass_tb':1,'Pt':0.0254,'Num_passes_casco':1,'Efic_bomb1':1,'Efic_bomb2':1};heat_friction_shell(fluido1,fluido2,material)
+'''
+
+# Exemplo 8.5 Kakaç e Liu
+'''
+fluido1={'Vazao':22.22222,'T_entr':35,'T_said':25,'cp':4178.5,'k':0.614,'Pr':5.43,'Viscos':7.97*10**-4,'Densidade':995.7,'Diam_ext':0.5,'Diam_int':0.38735,'Liquido':1,'Viscos_tw':8.15*10**-4};fluido2={'Vazao':38.8888889,'T_entr':20,'T_said':27,'cp':4179,'k':0.6065,'Pr':6.55,'Viscos':9.5*10**-4,'Densidade':997,'Diam_ext':0.0254,'Diam_int':0.02291,'Annulus':0,'Liquido':1,'Viscos_tw':10.02*10**-4};material={'K':42.3,'L':9.28, 'R_fi':0.000176,'R_fo':0.000176,'Calor_cnste':1,'Contracorrente':1,'Angulo_tubos':90,'Bfl_spac':0.3048,'Bfl_prct':0.25,'Num_pass_tb':1,'Pt':0.03175}
+'''
+
+#Exemplo do Serth
+
+
+
+# Exemplo 7.3 D. Kern STT
+"""
+fluido2={'Vazao':18.773,'T_entr':37.7,'T_said':76.6,'cp':2055.4,'k':0.1320592,'Pr':54.22268630583,'Viscos':3.483801*10**-3,'Densidade':827.005,'Diam_ext':25.4*10**-3,'Diam_int':20.574*10**-3,'Liquido':1,'Viscos_tw':0.197,'Annulus':0};fluido1={'Vazao':5.52702,'T_entr':198.8,'T_said':93.3,'cp':2525.0,'k':0.1386852,'Pr':6.77507765,'Viscos':372.12*10**-6,'Densidade':723.5983,'Diam_ext':0.57785,'Diam_int':0.53975,'Annulus':1,'Liquido':1,'Viscos_tw':372.12*10**-6,'Annulus':1};material={'K':54,'L':4.8768, 'R_fi':0,'R_fo':0,'Calor_cnste':1,'Contracorrente':0,'Angulo_tubos':90,'Bfl_spac':127*10**-3,'Bfl_prct':0.25,'Num_pass_tb':4,'Pt':0.03175,'Num_passes_casco':1};heat_friction_shell(fluido1,fluido2,material)
+"""
 
 
 

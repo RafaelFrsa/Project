@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
-
+# -*- coding: cp1252 -*-
+# Módulo de Equações para Trocadores de Calor Duplo-Tubo
+# Última Alteração 11:15 19/09/2016
 
 from math import *
 
@@ -19,11 +20,12 @@ def Pressure_drop_serth(fluido,material,diam_h=0):
     # r --> Return bends, n --> nozzle losses; Serth pg. 154
     s=fluido['Densidade']/1000;G=fluido['Vazao']/fluido['Area_h']
     if fluido['Re']<4000:
-        f=16/fluido['Re']
-        material[u'\u0394Pn']=(15**-4)*(material['Num_gramp'])*(G**2)/s
+        f=16/fluido['Re'] #Kakaç e Liu pg. 132
+        material[u'\u0394Pn']=(1.5*10**-3)*(material['Num_gramp'])*(G**2)/s
         if fluido['Annulus']==1:
             f*=1.5 #Serth pg 113
-            material[u'\u0394Pr2']=(6*10**-4)*(material['Num_gramp']*2-1)*G**2/s
+            #material[u'\u0394Pr2']=(6*10**-4)*(material['Num_gramp']*2-1)*G**2/s
+            material[u'\u0394Pr2']=(7.5*10**-4)*(material['Num_gramp']*2-1)*(G**2)/s
         else:
             material[u'\u0394Pr1']=(7.5*10**-4)*(material['Num_gramp']*2-1)*(G**2)/s
     else:
@@ -32,7 +34,8 @@ def Pressure_drop_serth(fluido,material,diam_h=0):
         if fluido['Annulus']==1:
             material[u'\u0394Pr2']=(6*10**-4)*(material['Num_gramp']*2-1)*G**2/s
         else:
-            material[u'\u0394Pr1']=(7.5*10**-4)*(material['Num_gramp']*2-1)*(G**2)
+            #material[u'\u0394Pr1']=(7.5*10**-4)*(material['Num_gramp']*2-1)*(G**2)
+            material[u'\u0394Pr1']=(6*10**-4)*(material['Num_gramp']*2-1)*G**2/s
     if fluido['Annulus']==0:
         fluido[u'\u0394P']=(4*f*2*material['L']*material['Num_gramp']*fluido['Densidade']*fluido['Vel_m']**2)/(2*fluido['Diam_int'])
         fluido[u'\u0394Ptotal']=fluido[u'\u0394P']+ material[u'\u0394Pr1']
@@ -43,16 +46,16 @@ def Pressure_drop_serth(fluido,material,diam_h=0):
 
 
 def desvio(dados):
-	"Retira os dados que se afastam muito da média do conjunto"
-	desvio={};med=sum(dados.values())/len(dados);M=max(dados.values())
-	if abs(med-M)/med>0.4:
-		for d in dados.keys():
-			if dados[d]==M: del dados[d]
-	med=sum(dados.values())/len(dados)
-	for p in dados.keys():desvio[p]=abs(med-dados[p])/med
-	for p in desvio.keys():
-		if desvio[p]>0.3: del dados[p]
-	return dados
+    "Retira os dados que se afastam muito da média do conjunto"
+    desvio={};med=sum(dados.values())/len(dados);M=max(dados.values())
+    if abs(med-M)/med>0.4:
+        for d in dados.keys():
+            if dados[d]==M: del dados[d]
+    med=sum(dados.values())/len(dados)
+    for p in dados.keys():desvio[p]=abs(med-dados[p])/med
+    for p in desvio.keys():
+        if desvio[p]>0.3: del dados[p]
+    return dados
 
 def calor_vazao(fluido1,fluido2):
     '''Calor Cedido igual o calor recebido pelos fluidos'''
@@ -75,7 +78,7 @@ def reynolds_tube(fluido1,fluido2,material):
     n=material['Num_tubs'] if material['Multi_tube']==True else 1
     fluido2['Area_h']=(pi/4)*(pow(fluido2['Diam_int'],2)-n*pow(fluido1['Diam_ext'],2)) 
     fluido1['Area_h']=pi*(fluido1['Diam_int']**2)/4
-    diam_h=(pow(fluido2['Diam_int'],2)-n*pow(fluido1['Diam_ext'],2))/(fluido2['Diam_int']+n*fluido2['Diam_ext'])
+    diam_h=(pow(fluido2['Diam_int'],2)-n*pow(fluido1['Diam_ext'],2))/(fluido2['Diam_int']+n*fluido1['Diam_ext'])
     # Causa1 ==> obs.: Kern usa o diâmetro equivalente
     #KAKAÇ E LIU, PG. 87, DESCRIÇÃO DO MOTIVO DE DIAMETRO HIDRÁULICO
     fluido2['Vel_m']=fluido2['Vazao']/(fluido2['Densidade']*fluido2['Area_h'])
@@ -130,7 +133,8 @@ def nusselt_tube(fluido1,fluido2,material):
             d_ext=fluido2['Diam_ext']
             if calor_cnste==True:
                 g=1+0.14*pow(d_ext/D_i,-1/2.);diam_h=D_i-do
-                Nu_H=(1.86*pow(Pe*diam/L,1./3)*pow(vis_tm/vis_tw,0.14))+((0.19*pow(Pe*diam_h/L,0.8))/(1+(0.117*pow(Pe*diam_h/L,0.467))))*g
+                #Nu_H=(1.86*pow(Pe*diam/L,1./3)*pow(vis_tm/vis_tw,0.14))+((0.19*pow(Pe*diam_h/L,0.8))/(1+(0.117*pow(Pe*diam_h/L,0.467))))*g
+                Nu_H=(3.66+1.2*pow(fluido1['Diam_ext']/fluido2['Diam_int'],-0.5))+((0.19*pow(Pe*diam_h/L,0.8))/(1+(0.117*pow(Pe*diam_h/L,0.467))))*g
                 nusselts['Nu_H (Eq. 3.20a)']=Nu_H
             if calor_cnste==False:
                 g=1+0.14*pow(d_ext/D_i,0.1);diam_h=D_i-do
@@ -145,9 +149,11 @@ def nusselt_tube(fluido1,fluido2,material):
         nusselts={}
         if fl==True: # Se for Liquido
             if Pr>0.1 and Pr<10000:
-                m=0.88-0.24/(4+Pr)
-                n=1/3.+0.5*pow(e,-0.6*Pr)
-                Nu=5+0.015*pow(Re,m)*pow(Pr,n)
+                #m=0.88-0.24/(4+Pr)
+                #n=1/3.+0.5*pow(e,-0.6*Pr)
+                #Nu=5+0.015*pow(Re,m)*pow(Pr,n)
+                f=(1.58*log(Re)-3.28)**-2
+                Nu=(f/2*Re*Pr)/(1+8.7*((f/2)**0.5)*(Pr-1))
                 nusselts['Nu (Eq. 3.30)']=Nu
         if fl==False:
             if Pr>0.5 and Pr<1:
