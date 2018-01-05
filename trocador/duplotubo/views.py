@@ -16,10 +16,10 @@ def propried_get(Table,temp,temp_w,fluido):
     for propriedade in fluido.keys():
         try:
             if propriedade=='Viscos_tw':
-                query1,query2,temp1,temp2=trecho(Agua,temp_w)
+                query1,query2,temp1,temp2=trecho(Table,temp_w)
                 prop1=eval('query1.Viscos');prop2=eval('query2.Viscos')
             else:
-                query1,query2,temp1,temp2=trecho(Agua,temp)
+                query1,query2,temp1,temp2=trecho(Table,temp)
                 prop1=eval('query1.%s'%propriedade);prop2=eval('query2.%s'%propriedade)
             fluido[propriedade]=(prop2-prop1)*(temp-temp1)/(temp2-temp1) + prop1 if prop2>prop1 else -(prop1-prop2)*(temp-temp1)/(temp2-temp1) + prop1
         except: pass
