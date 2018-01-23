@@ -6,12 +6,11 @@ from trocador.core.models import Agua, Butano, CO2, Metano, Pentano, RC318
 
 Opcoes = (('manual', 'Manual'),
     ('Agua', 'Água'),
-    ('duplotubo_butano', 'Butano'),
-    ('duplotubo_co2', 'CO2'), 
-    ('duplotubo_metano', 'Metano'),
-    ('duplotubo_pentano', 'Pentano'),   
-    ('duplotubo_rc318', 'RC318'),)
-
+    ('Butano', 'Butano'),
+    ('CO2', 'CO2'), 
+    ('Metano', 'Metano'),
+    ('Pentano', 'Pentano'),   
+    ('RC318', 'RC318'),)
 
 class Calculo(forms.Form):
 	# Fluido 1
